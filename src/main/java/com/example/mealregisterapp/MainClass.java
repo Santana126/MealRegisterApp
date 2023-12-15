@@ -27,17 +27,19 @@ public class MainClass extends Application {
             Scanner scanner = new Scanner(System.in);
             try {
                 int choice = scanner.nextInt();
+            while (true){
+
                 if (choice == 1) {
-                    HomePageControllerCLI homePageControllerCLI = new HomePageControllerCLI();
-                    homePageControllerCLI.displayHomePage();
-                    System.exit(0);
-                } else if (choice == 2) {
-                    launch();
-                    System.exit(0);
-                }else {
-                    Printer.printMessage("Enter a valid number");
-                    Printer.printMessage("-------------------------------------------------------");
-                }
+                HomePageControllerCLI homePageControllerCLI = new HomePageControllerCLI();
+                homePageControllerCLI.displayHomePage();
+            } else if (choice == 2) {
+                launch();
+            } else {
+                Printer.printMessage("Enter a valid number");
+                Printer.printMessage("-------------------------------------------------------");
+                break;
+            }
+            }
             } catch (NumberFormatException e) {
                     launch();
                     break;
