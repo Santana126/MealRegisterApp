@@ -5,4 +5,6 @@ module com.example.mealregisterapp {
 
     opens com.example.mealregisterapp to javafx.fxml;
     exports com.example.mealregisterapp;
+    opens com.example.mealregisterapp.graphiccontroller to javafx.fxml;
+    exports com.example.mealregisterapp.graphiccontroller;
 }
