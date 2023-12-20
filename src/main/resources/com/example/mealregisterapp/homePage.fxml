@@ -15,9 +15,9 @@
    </Text>
    <Button layoutX="50.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleMyAccountClick" prefHeight="80.0"
            prefWidth="80.0" text="MyAccount"/>
-   <Button layoutX="180.0" layoutY="160.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Meal Page"/>
+   <Button layoutX="180.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleMealPageClick" prefHeight="80.0" prefWidth="80.0" text="Meal Page"/>
    <Button layoutX="340.0" layoutY="160.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0"
            text="RecipePage"/>
    <Button layoutX="467.0" layoutY="160.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Settings"/>
-   <Button layoutX="260.0" layoutY="280.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Exit"/>
+   <Button layoutX="260.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleExitClick" prefHeight="80.0" prefWidth="80.0" text="Exit"/>
 </AnchorPane>
