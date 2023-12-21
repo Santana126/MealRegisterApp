@@ -38,7 +38,7 @@ public class SceneManager {
         stage.setScene(scene);
     }
     public void showMealPage() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/myAccountPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/mealPage.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -46,6 +46,15 @@ public class SceneManager {
 
     public void showExitOverlay() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/exitOverlay.fxml"));
+        loadOverlay(loader);
+    }
+
+    public void showNotImplementedYetOverlay() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/notImplementedYetOverlay.fxml"));
+        loadOverlay(loader);
+    }
+
+    private void loadOverlay(FXMLLoader loader) throws IOException {
         Parent root = loader.load();
         OverlayController controller = loader.getController();
         Stage overlayStage = new Stage(StageStyle.UNDECORATED);
@@ -54,5 +63,12 @@ public class SceneManager {
         overlayStage.setScene(new Scene(root));
         controller.setOverlayStage(overlayStage);
         overlayStage.showAndWait();
+    }
+
+    public void showRegistMealPage() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/registMealPage.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
 }

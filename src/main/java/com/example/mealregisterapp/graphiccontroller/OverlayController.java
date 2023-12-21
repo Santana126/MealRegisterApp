@@ -12,8 +12,13 @@ public class OverlayController {
     }
 
     @FXML
-    private void closeOverlay() {
+    private void closeExitOverlay() {
         overlayStage.close();
         HomePageGraphicController.exitConfirmed();
+    }
+
+    @FXML
+    private void closeSimpleOverlay(){
+        overlayStage.close();
     }
 }
