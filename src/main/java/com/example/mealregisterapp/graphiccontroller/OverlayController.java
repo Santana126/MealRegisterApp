@@ -14,5 +14,6 @@ public class OverlayController {
     @FXML
     private void closeOverlay() {
         overlayStage.close();
+        HomePageGraphicController.exitConfirmed();
     }
 }

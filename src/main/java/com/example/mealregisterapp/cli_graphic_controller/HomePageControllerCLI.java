@@ -30,7 +30,7 @@ public class HomePageControllerCLI {
             }
             case 5 -> {
                 Printer.printMessage("Grazie per aver utilizzato l'app");
-                System.exit(0);
+                System.exit(1);
             }
             default -> {
                 Printer.printMessage("Scegli una funzione valida");

@@ -24,26 +24,18 @@ public class SceneManager {
     }
 
 
-    public void showHomePage() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/homePage.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void showHomePage() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/homePage.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
 
-    public void showAccountPage() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/myAccountPage.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void showAccountPage() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/myAccountPage.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
     public void showMealPage() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/myAccountPage.fxml"));

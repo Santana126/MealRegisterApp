@@ -5,11 +5,12 @@ import com.example.mealregisterapp.utils.Printer;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class MainClass extends Application {
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws IOException {
         SceneManager sceneManager = SceneManager.getInstance(stage);
         sceneManager.showHomePage();
         stage.show();
