@@ -12,10 +12,8 @@ public class HomePageControllerCLI {
 
     public void displayHomePage() {
         ClearCLI.clear();
-        Printer.printMessage("-------------------------");
-        Printer.printMessage("--------Welcome----------");
-        Printer.printMessage("-------Home Page---------");
-        Printer.printMessage("-------------------------\n\tScegli un operazione:\n");
+        Printer.printPageTitle("Home Page");
+        Printer.printMessage("Scegli un operazione:\n");
         Printer.printMessage("1)MyAccount\n2)Meal Page\n3)Recipe Page\n4)Settings\n5)Exit");
         Scanner scanner = new Scanner(System.in);
         handleChoice(scanner.nextLine());
@@ -23,7 +21,11 @@ public class HomePageControllerCLI {
 
     private void handleChoice(String nextLine) {
         switch (Integer.parseInt(nextLine)){
-            case 1, 3, 4-> notImplementedYetMessage();
+            case 1 -> {
+                AccountPageControllerCLI accountPageControllerCLI = new AccountPageControllerCLI();
+                accountPageControllerCLI.displayAccountPage();
+            }
+            case 3, 4-> notImplementedYetMessage();
             case 2 -> {
                 MealPageControllerCLI mealPageControllerCLI = new MealPageControllerCLI();
                 mealPageControllerCLI.displayMealPage();
