@@ -71,4 +71,9 @@ public class SceneManager {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+
+    public void showMealResumeOverlay() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/mealResumeOverlay.fxml"));
+        loadOverlay(loader);
+    }
 }

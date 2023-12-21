@@ -1,6 +1,9 @@
-package com.example.mealregisterapp.model;
+package com.example.mealregisterapp.bean;
 
-public class Meal {
+import com.example.mealregisterapp.model.Macro;
+import com.example.mealregisterapp.model.MealType;
+
+public class BeanMeal {
 
     private String date;
 
@@ -9,9 +12,9 @@ public class Meal {
 
     private int calories;
 
-    public Meal(){}
+    public BeanMeal(){}
 
-    public Meal(String date, MealType mealType, Macro macro, int calories) {
+    public BeanMeal(String date, MealType mealType, Macro macro, int calories) {
         this.date = date;
         this.mealType = mealType;
         this.macro = macro;
@@ -28,6 +31,23 @@ public class Meal {
 
     public MealType getMealType() {
         return mealType;
+    }
+    public String getMealTypeString() {
+        switch (mealType){
+            case CENA -> {
+                return "Cena";
+            }
+            case PRANZO -> {
+                return "Pranzo";
+            }
+            case SPUNTINO -> {
+                return "Spuntino";
+            }
+            case COLAZIONE -> {
+                return "Colazione";
+            }
+        }
+        return null;
     }
 
     public void setMealType(MealType mealType) {

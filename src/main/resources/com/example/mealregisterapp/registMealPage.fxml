@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TextField?>
@@ -7,34 +9,33 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mealregisterapp.graphiccontroller.MealPageGraphicController">
    <Text layoutX="209.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Regist Meal Page">
       <font>
          <Font size="24.0" />
       </font>
    </Text>
-   <Button layoutX="266.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleBackFromRegistPageClick" prefHeight="80.0" prefWidth="80.0" text="Back" />
-   <TextField layoutX="58.0" layoutY="126.0" prefHeight="24.0" prefWidth="80.0" />
+   <Button layoutX="514.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleBackFromRegistPageClick" prefHeight="60.0" prefWidth="60.0" text="Back" />
+   <TextField fx:id="textFieldCalories" layoutX="58.0" layoutY="126.0" prefHeight="24.0" prefWidth="80.0" />
    <Text layoutX="58.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calories" />
-   <TextField layoutX="58.0" layoutY="198.0" prefHeight="24.0" prefWidth="80.0" />
+   <TextField fx:id="textFieldCarbs" layoutX="58.0" layoutY="198.0" prefHeight="24.0" prefWidth="80.0" />
    <Text layoutX="58.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carbs" />
-   <TextField layoutX="209.0" layoutY="124.0" prefHeight="24.0" prefWidth="80.0" />
+   <TextField fx:id="textFieldFats" layoutX="209.0" layoutY="124.0" prefHeight="24.0" prefWidth="80.0" />
    <Text layoutX="209.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fats" />
-   <TextField layoutX="209.0" layoutY="197.0" prefHeight="24.0" prefWidth="80.0" />
+   <TextField fx:id="textFieldProtein" layoutX="209.0" layoutY="197.0" prefHeight="24.0" prefWidth="80.0" />
    <Text layoutX="209.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Protein" wrappingWidth="52.36285400390625" />
-   <TextField layoutX="355.0" layoutY="124.0" prefHeight="24.0" prefWidth="80.0" />
+   <TextField fx:id="textFieldDate" layoutX="355.0" layoutY="124.0" prefHeight="24.0" prefWidth="80.0" />
    <Text layoutX="355.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
-   <ChoiceBox layoutX="353.0" layoutY="195.0" prefWidth="80.0">            <items>
+   <ChoiceBox fx:id="choiceBoxMealType" layoutX="353.0" layoutY="195.0" prefWidth="80.0">            <items>
    <!-- Opzioni del ChoiceBox -->
    <FXCollections fx:factory="observableArrayList">
-      <String fx:value="Colazione"/>
-      <String fx:value="Pranzo"/>
-      <String fx:value="Cena"/>
-      <String fx:value="Spuntino"/>
+      <String fx:value="Colazione" />
+      <String fx:value="Pranzo" />
+      <String fx:value="Cena" />
+      <String fx:value="Spuntino" />
    </FXCollections>
 </items>
    </ChoiceBox>
    <Text layoutX="355.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo" />
+   <Button layoutX="265.0" layoutY="246.0" mnemonicParsing="false" onAction="#handleSaveMealClick" text="Save Meal" />
 </AnchorPane>
