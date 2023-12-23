@@ -25,32 +25,32 @@ public class SceneManager {
 
 
     public void showHomePage() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/homePage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/graphics/homePage.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
 
     public void showAccountPage() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/myAccountPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/graphics/myAccountPage.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
     public void showMealPage() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/mealPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/graphics/mealPage.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
 
     public void showExitOverlay() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/exitOverlay.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/graphics/exitOverlay.fxml"));
         loadOverlay(loader);
     }
 
     public void showNotImplementedYetOverlay() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/notImplementedYetOverlay.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/graphics/notImplementedYetOverlay.fxml"));
         loadOverlay(loader);
     }
 
@@ -66,14 +66,14 @@ public class SceneManager {
     }
 
     public void showRegistMealPage() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/registMealPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/graphics/registMealPage.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
 
     public void showMealResumeOverlay() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/mealResumeOverlay.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/graphics/mealResumeOverlay.fxml"));
         loadOverlay(loader);
     }
 }

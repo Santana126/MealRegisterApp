@@ -68,13 +68,13 @@ public class MealPageGraphicController {
 
     @FXML
     public void handleSaveMealClick(ActionEvent event) throws IOException {
-        beanMeal.setCalories(Integer.parseInt(String.valueOf(this.textFieldCalories)));
+        beanMeal.setCalories(Integer.parseInt(String.valueOf(textFieldCalories.getText())));
         Macro macro = new Macro();
-        macro.setCarb(Integer.parseInt(String.valueOf(textFieldCarbs)));
-        macro.setFat(Integer.parseInt(String.valueOf(textFieldFats)));
-        macro.setProtein(Integer.parseInt(String.valueOf(textFieldProtein)));
+        macro.setCarb(Integer.parseInt(String.valueOf(textFieldCarbs.getText())));
+        macro.setFat(Integer.parseInt(String.valueOf(textFieldFats.getText())));
+        macro.setProtein(Integer.parseInt(String.valueOf(textFieldProtein.getText())));
         beanMeal.setMacro(macro);
-        beanMeal.setDate(String.valueOf(textFieldDate));
+        beanMeal.setDate(String.valueOf(textFieldDate.getText()));
         switch (choiceBoxMealType.getValue()) {
             case "Colazione" -> beanMeal.setMealType(MealType.COLAZIONE);
             case "Pranzo" -> beanMeal.setMealType(MealType.PRANZO);
@@ -86,6 +86,8 @@ public class MealPageGraphicController {
     }
 
     private void showMealResume() throws IOException {
+        sceneManager.showMealResumeOverlay();
+
         textResumeDate.setText(beanMeal.getDate());
         textResumeMealType.setText(beanMeal.getMealTypeString());
         textResumeCalories.setText(String.valueOf(beanMeal.getCalories()));
@@ -93,7 +95,6 @@ public class MealPageGraphicController {
         textResumeFats.setText(String.valueOf(beanMeal.getMacro().getFat()));
         textResumeProtein.setText(String.valueOf(beanMeal.getMacro().getProtein()));
 
-        sceneManager.showMealResumeOverlay();
     }
 
     private void showErrorOverlay() {
