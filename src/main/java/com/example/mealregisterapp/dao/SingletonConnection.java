@@ -10,10 +10,10 @@ public class SingletonConnection {
     private static final String URL="jdbc:sqlite:src/main/resources/com/example/mealregisterapp/database/MealDataBase";
 
     private SingletonConnection() throws SQLException {
-        DataBaseConnection();
+        dataBaseConnection();
     }
 
-    private static void DataBaseConnection() throws SQLException {
+    private static void dataBaseConnection() throws SQLException {
         connection = DriverManager.getConnection(URL);
     }
 

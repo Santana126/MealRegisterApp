@@ -29,10 +29,6 @@ public class MealPageGraphicController {
     private ChoiceBox<String> choiceBoxMealType;
 
 
-    public MealPageGraphicController() {
-    }
-
-
     @FXML
     private void handleRegistMeal() throws IOException {
         sceneManager.showRegistMealPage();
@@ -74,6 +70,8 @@ public class MealPageGraphicController {
     }
 
     private void showErrorOverlay() {
-
+        /*
+        Chiama metodo che fa apparire un Overlay di errore
+         */
     }
 }

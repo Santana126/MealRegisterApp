@@ -31,7 +31,7 @@ public class MealDao {
         preparedStatement.setString(5, String.valueOf(mealToSave.getMacro().getFat()));
         preparedStatement.setString(6, String.valueOf(mealToSave.getMacro().getProtein()));
         int rowAffected = preparedStatement.executeUpdate();
-        if (!(rowAffected > 0)){
+        if (rowAffected <= 0){
             throw new SaveMealException("Inserimento fallito");
         }
     }
