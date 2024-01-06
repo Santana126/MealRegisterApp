@@ -5,34 +5,32 @@ import com.example.mealregisterapp.model.MealType;
 
 public class BeanMeal {
 
-    private String date;
+    private static String date;
 
-    private MealType mealType;
-    private Macro macro;
+    private static MealType mealType;
+    private static Macro macro;
 
-    private int calories;
-
-    public BeanMeal(){}
+    private static int calories;
 
     public BeanMeal(String date, MealType mealType, Macro macro, int calories) {
-        this.date = date;
-        this.mealType = mealType;
-        this.macro = macro;
-        this.calories = calories;
+        BeanMeal.date = date;
+        BeanMeal.mealType = mealType;
+        BeanMeal.macro = macro;
+        BeanMeal.calories = calories;
     }
 
-    public String getDate() {
+    public static String getDate() {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public static void setDate(String newDate) {
+        date = newDate;
     }
 
-    public MealType getMealType() {
+    public static MealType getMealType() {
         return mealType;
     }
-    public String getMealTypeString() {
+    public static String getMealTypeString() {
         switch (mealType){
             case CENA -> {
                 return "Cena";
@@ -50,23 +48,23 @@ public class BeanMeal {
         return null;
     }
 
-    public void setMealType(MealType mealType) {
-        this.mealType = mealType;
+    public static void setMealType(MealType newMealType) {
+        mealType = newMealType;
     }
 
-    public Macro getMacro() {
+    public static Macro getMacro() {
         return macro;
     }
 
-    public void setMacro(Macro macro) {
-        this.macro = macro;
+    public static void setMacro(Macro newMacro) {
+        macro = newMacro;
     }
 
-    public int getCalories() {
+    public static int getCalories() {
         return calories;
     }
 
-    public void setCalories(int calories) {
-        this.calories = calories;
+    public static void setCalories(int newCalories) {
+        calories = newCalories;
     }
 }

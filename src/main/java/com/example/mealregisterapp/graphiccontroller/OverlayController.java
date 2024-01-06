@@ -21,4 +21,5 @@ public class OverlayController {
     private void closeSimpleOverlay(){
         overlayStage.close();
     }
+
 }

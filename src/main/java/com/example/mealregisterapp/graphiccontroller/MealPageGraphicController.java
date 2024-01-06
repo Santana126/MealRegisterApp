@@ -8,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
 
@@ -29,21 +28,9 @@ public class MealPageGraphicController {
     @FXML
     private ChoiceBox<String> choiceBoxMealType;
 
-    private final BeanMeal beanMeal = new BeanMeal();
 
-    @FXML
-    private Text textResumeCalories;
-
-    @FXML
-    private Text textResumeCarbs;
-    @FXML
-    private Text textResumeFats;
-    @FXML
-    private Text textResumeProtein;
-    @FXML
-    private Text textResumeDate;
-    @FXML
-    private Text textResumeMealType;
+    public MealPageGraphicController() {
+    }
 
 
     @FXML
@@ -68,46 +55,25 @@ public class MealPageGraphicController {
 
     @FXML
     public void handleSaveMealClick(ActionEvent event) throws IOException {
-        beanMeal.setCalories(Integer.parseInt(String.valueOf(textFieldCalories.getText())));
+
+        BeanMeal.setCalories(Integer.parseInt(String.valueOf(textFieldCalories.getText())));
         Macro macro = new Macro();
         macro.setCarb(Integer.parseInt(String.valueOf(textFieldCarbs.getText())));
         macro.setFat(Integer.parseInt(String.valueOf(textFieldFats.getText())));
         macro.setProtein(Integer.parseInt(String.valueOf(textFieldProtein.getText())));
-        beanMeal.setMacro(macro);
-        beanMeal.setDate(String.valueOf(textFieldDate.getText()));
+        BeanMeal.setMacro(macro);
+        BeanMeal.setDate(String.valueOf(textFieldDate.getText()));
         switch (choiceBoxMealType.getValue()) {
-            case "Colazione" -> beanMeal.setMealType(MealType.COLAZIONE);
-            case "Pranzo" -> beanMeal.setMealType(MealType.PRANZO);
-            case "Cena" -> beanMeal.setMealType(MealType.CENA);
-            case "Spuntino" -> beanMeal.setMealType(MealType.SPUNTINO);
+            case "Colazione" -> BeanMeal.setMealType(MealType.COLAZIONE);
+            case "Pranzo" -> BeanMeal.setMealType(MealType.PRANZO);
+            case "Cena" -> BeanMeal.setMealType(MealType.CENA);
+            case "Spuntino" -> BeanMeal.setMealType(MealType.SPUNTINO);
             default -> showErrorOverlay();
         }
-        showMealResume();
-    }
-
-    private void showMealResume() throws IOException {
-        sceneManager.showMealResumeOverlay();
-
-        textResumeDate.setText(beanMeal.getDate());
-        textResumeMealType.setText(beanMeal.getMealTypeString());
-        textResumeCalories.setText(String.valueOf(beanMeal.getCalories()));
-        textResumeCarbs.setText(String.valueOf(beanMeal.getMacro().getCarb()));
-        textResumeFats.setText(String.valueOf(beanMeal.getMacro().getFat()));
-        textResumeProtein.setText(String.valueOf(beanMeal.getMacro().getProtein()));
-
+        sceneManager.showMealResumePage();
     }
 
     private void showErrorOverlay() {
 
-    }
-
-    @FXML
-    public void handleConfirmResumeOverlay(ActionEvent event) throws IOException {
-        sceneManager.showMealPage();
-    }
-
-    @FXML
-    public void handleModifyResumeOverlay(ActionEvent event) throws IOException {
-        sceneManager.showRegistMealPage();
     }
 }

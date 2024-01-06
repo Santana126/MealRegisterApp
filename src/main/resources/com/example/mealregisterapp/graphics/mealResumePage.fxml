@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mealregisterapp.graphiccontroller.MealResumeGraphicController">
+   <children>
+      <Label alignment="CENTER" layoutX="246.0" layoutY="24.0" text="Meal Resume" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="304.0" layoutY="344.0" mnemonicParsing="false" onAction="#handleConfirmResume" text="Confirm" />
+      <Button layoutX="235.0" layoutY="344.0" mnemonicParsing="false" onAction="#closeMealResumePage" text="Modify" />
+      <Text layoutX="178.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calories" />
+      <Label fx:id="textResumeCalories" layoutX="169.0" layoutY="177.0" prefHeight="18.0" prefWidth="59.0" />
+      <Text layoutX="184.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carbs" />
+      <Label fx:id="textResumeCarbs" layoutX="169.0" layoutY="245.0" prefHeight="18.0" prefWidth="59.0" />
+      <Text layoutX="285.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fats" />
+      <Label fx:id="textResumeFats" layoutX="266.0" layoutY="177.0" prefHeight="18.0" prefWidth="59.0" />
+      <Text layoutX="277.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Protein" />
+      <Label fx:id="textResumeProtein" layoutX="266.0" layoutY="245.0" prefHeight="18.0" prefWidth="59.0" />
+      <Text layoutX="375.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
+      <Label fx:id="textResumeDate" layoutX="357.0" layoutY="177.0" prefHeight="18.0" prefWidth="59.0" />
+      <Text layoutX="374.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" />
+      <Label fx:id="textResumeMealType" layoutX="357.0" layoutY="245.0" prefHeight="18.0" prefWidth="59.0" />
+   </children>
+</AnchorPane>
