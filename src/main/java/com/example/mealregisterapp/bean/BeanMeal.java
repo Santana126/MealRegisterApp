@@ -67,4 +67,11 @@ public class BeanMeal {
     public static void setCalories(int newCalories) {
         calories = newCalories;
     }
+
+    public static void resetValues() {
+        date = null;
+        mealType = null;
+        calories = 0;
+        macro = null;
+    }
 }

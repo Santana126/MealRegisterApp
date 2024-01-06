@@ -8,9 +8,10 @@ import java.sql.SQLException;
 
 public class MealRegisterController {
 
-    public void saveMeal(BeanMeal beanMeal) throws SQLException, SaveMealException {
+    public void saveMeal() throws SQLException, SaveMealException {
         MealDao mealDao = new MealDao();
-        mealDao.saveMeal(beanMeal);
+        mealDao.saveMeal();
+        BeanMeal.resetValues();
     }
 
 }
