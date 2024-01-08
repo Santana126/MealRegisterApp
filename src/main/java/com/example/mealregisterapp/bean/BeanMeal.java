@@ -11,14 +11,14 @@ public class BeanMeal {
     private static Macro macro;
 
     private static int calories;
-
+/*
     public BeanMeal(String date, MealType mealType, Macro macro, int calories) {
         BeanMeal.date = date;
         BeanMeal.mealType = mealType;
         BeanMeal.macro = macro;
         BeanMeal.calories = calories;
     }
-
+*/
     public static String getDate() {
         return date;
     }
@@ -71,7 +71,7 @@ public class BeanMeal {
     public static void resetValues() {
         date = null;
         mealType = null;
-        calories = 0;
+        calories = 0 ;
         macro = null;
     }
 }
