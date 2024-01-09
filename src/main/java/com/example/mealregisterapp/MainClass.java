@@ -30,6 +30,7 @@ public class MainClass extends Application {
                 homePageControllerCLI.displayHomePage();
             } else if (choice == 2) {
                 launch();
+                System.exit(0);
             } else {
                 Printer.printMessage("Enter a valid number");
                 Printer.printMessage("-------------------------------------------------------");
