@@ -78,4 +78,12 @@ public class SceneManager {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+
+    public void showFoodListPage() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/graphics/foodListPage.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
+
 }

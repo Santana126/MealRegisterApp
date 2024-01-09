@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.mealregisterapp.graphiccontroller.FoodListPageGraphicController">
+    <Text layoutX="244.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Food Page">
+        <font>
+            <Font size="24.0"/>
+        </font>
+    </Text>
+    <Button layoutX="511.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleBackClick" prefHeight="58.0"
+            prefWidth="58.0" text="Back"/>
+    <ScrollPane layoutX="329.0" layoutY="81.0" prefHeight="223.0" prefWidth="254.0">
+        <content>
+            <ListView fx:id="foodListView" prefHeight="219.0" prefWidth="252.0"/>
+        </content>
+    </ScrollPane>
+    <Button layoutX="252.0" layoutY="324.0" mnemonicParsing="false" onAction="#handleConfirmFood" prefHeight="42.0"
+            prefWidth="96.0" text="Confirm"/>
+    <TextField fx:id="dateTextField" layoutX="51.0" layoutY="106.0" prefHeight="26.0" prefWidth="74.0"
+               promptText="DD/MM"/>
+    <Text layoutX="75.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data"
+          wrappingWidth="27.89141845703125"/>
+    <Text layoutX="74.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo"
+          wrappingWidth="27.89141845703125"/>
+    <ChoiceBox fx:id="choiceBoxMealType" layoutX="51.0" layoutY="214.0" prefHeight="26.0" prefWidth="74.0">
+        <items>
+            <!-- Opzioni del ChoiceBox -->
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Colazione"/>
+                <String fx:value="Pranzo"/>
+                <String fx:value="Cena"/>
+                <String fx:value="Spuntino"/>
+            </FXCollections>
+        </items>
+    </ChoiceBox>
+</AnchorPane>

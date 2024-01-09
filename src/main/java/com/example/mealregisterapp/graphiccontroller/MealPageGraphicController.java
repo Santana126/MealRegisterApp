@@ -31,7 +31,7 @@ public class MealPageGraphicController {
 
     @FXML
     private void handleRegistMeal() throws IOException {
-        sceneManager.showRegistMealPage();
+        sceneManager.showFoodListPage();
     }
 
     @FXML
