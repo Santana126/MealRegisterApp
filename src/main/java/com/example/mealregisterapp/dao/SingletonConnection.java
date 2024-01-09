@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class SingletonConnection {
     private static Connection connection;
 
-    private static final String URL="jdbc:sqlite:src/main/resources/com/example/mealregisterapp/database/MealDataBase";
+    private static final String URL="jdbc:sqlite:src/main/resources/com/example/mealregisterapp/database/MealDB";
 
     private SingletonConnection() throws SQLException {
         dataBaseConnection();
@@ -24,7 +24,6 @@ public class SingletonConnection {
             }
         } catch (SQLException e) {
             throw new SQLException();
-
         }
         return connection;
     }

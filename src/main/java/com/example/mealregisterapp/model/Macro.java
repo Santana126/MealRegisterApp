@@ -8,6 +8,15 @@ public class Macro {
 
     private float protein;
 
+    public Macro() {
+    }
+
+    public Macro(float carb, float fat, float protein) {
+        this.carb = carb;
+        this.fat = fat;
+        this.protein = protein;
+    }
+
     public float getCarb() {
         return carb;
     }
