@@ -44,14 +44,9 @@ public class MealRegisterController {
         }
     }
 
-    public void mealResume() throws SQLException {
-        System.out.println(meal.getID());
-        System.out.println(meal.getMealTypeString());
-        System.out.println(meal.getDate());
-        List<Food> foodList = meal.getMealFoodList();
-        for (Food food : foodList) {
-            System.out.println(food.foodName());
-
-        }
+    public void mealResume() {
+        /*
+        Show meal Resume TODO
+         */
     }
 }

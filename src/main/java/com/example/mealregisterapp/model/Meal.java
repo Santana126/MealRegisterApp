@@ -9,7 +9,7 @@ import java.util.List;
 public class Meal {
 
 
-    private Integer ID;
+    private Integer MealID;
 
     private String date;
 
@@ -89,20 +89,17 @@ public class Meal {
         if (foodList == null) {
             foodList = new ArrayList<>();
         }
-        System.out.println(food.foodName());
         foodList.add(food);
-        System.out.println(foodList.get(foodList.size()-1).foodName());
-
     }
 
-    public Integer getID() throws SQLException {
+    public Integer getMealID() throws SQLException {
         MealDao mealDao = new MealDao();
-        ID = mealDao.loadMealID(this);
-        return ID;
+        MealID = mealDao.loadMealID(this);
+        return MealID;
     }
 
-    public void setID(Integer ID) {
-        this.ID = ID;
+    public void setMealID(Integer mealID) {
+        this.MealID = mealID;
     }
 
     public List<Food> getMealFoodList() {

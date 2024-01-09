@@ -50,7 +50,7 @@ public class MealDao {
 
     public void saveFoodIntoMeal(Meal meal, Food food) throws SQLException, SaveMealException {
         preparedStatement = connection.prepareStatement("INSERT INTO MealFood (MealID, FoodName) VALUES (?, ?)");
-        preparedStatement.setInt(1,meal.getID());
+        preparedStatement.setInt(1,meal.getMealID());
         preparedStatement.setString(2,food.foodName());
         int rowAffected = preparedStatement.executeUpdate();
         if (rowAffected <= 0){

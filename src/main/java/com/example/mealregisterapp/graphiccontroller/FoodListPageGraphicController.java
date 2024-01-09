@@ -40,6 +40,7 @@ public class FoodListPageGraphicController {
     private List<BeanFood> selectedFoodList;
 
     public FoodListPageGraphicController() throws SQLException {
+        //Empty, need to throw Exception
     }
 
     public void initialize() throws SQLException {
