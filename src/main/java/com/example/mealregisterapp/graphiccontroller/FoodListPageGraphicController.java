@@ -3,7 +3,6 @@ package com.example.mealregisterapp.graphiccontroller;
 import com.example.mealregisterapp.SceneManager;
 import com.example.mealregisterapp.app_controller.MealRegisterController;
 import com.example.mealregisterapp.bean.BeanFood;
-import com.example.mealregisterapp.dao.FoodDao;
 import com.example.mealregisterapp.exception.SaveMealException;
 import com.example.mealregisterapp.model.MealType;
 import javafx.collections.ObservableList;
@@ -22,8 +21,7 @@ import java.util.Map;
 public class FoodListPageGraphicController {
 
     SceneManager sceneManager = SceneManager.getInstance(null);
-
-    FoodDao foodDao = new FoodDao();
+    MealRegisterController mealRegisterController = new MealRegisterController();
 
     // Mappa per tenere traccia delle checkbox e dei corrispondenti valori
     private Map<CheckBox, String> checkboxEntityMap;
@@ -39,13 +37,13 @@ public class FoodListPageGraphicController {
 
     private List<BeanFood> selectedFoodList;
 
-    public FoodListPageGraphicController() throws SQLException {
+    public FoodListPageGraphicController() {
         //Empty, need to throw Exception
     }
 
     public void initialize() throws SQLException {
         foodListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        List<String> entities = foodDao.loadAvailableFoodList();
+        List<String> entities = mealRegisterController.loadAvailableFood();
         checkboxEntityMap = new HashMap<>();
 
         // Crea una HBox per ogni entità con una CheckBox

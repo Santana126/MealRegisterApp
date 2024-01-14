@@ -10,4 +10,7 @@ public class Printer {
         printMessage("------" + message + "------");
         printMessage("--------------------------------");
     }
+    public static void printYesOrNo(){
+        printMessage("[Yes]/[No]");
+    }
 }

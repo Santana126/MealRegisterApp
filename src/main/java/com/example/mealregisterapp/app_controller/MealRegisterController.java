@@ -49,4 +49,10 @@ public class MealRegisterController {
         Show meal Resume TODO
          */
     }
+
+    public List<String> loadAvailableFood() throws SQLException {
+        FoodDao foodDao = new FoodDao();
+        //make some check on result
+        return foodDao.loadAvailableFoodList();
+    }
 }
