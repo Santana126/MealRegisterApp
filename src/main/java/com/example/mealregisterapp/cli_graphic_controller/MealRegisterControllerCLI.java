@@ -22,7 +22,7 @@ public class MealRegisterControllerCLI {
 
     private List<String> listOfAvailableFood;
 
-    private List<BeanFood> listOfFoodChoice = new ArrayList<>();
+    private final List<BeanFood> listOfFoodChoice = new ArrayList<>();
 
     public void displayMealRegisterPage() {
         ClearCLI.clear();
@@ -33,24 +33,14 @@ public class MealRegisterControllerCLI {
     private void registMeal() {
         boolean saved = false;
         while (!saved) {
-            Printer.printMessage("Inserisci la data del pasto:");
-            Scanner scanner = new Scanner(System.in);
-            data = scanner.nextLine();
-            mealType = null;
-            do {
-                mealType = selectMealType();
-            } while (mealType == null);
+            selectData();
+            selectMealType();
             try {
                 mealRegisterController.createMeal(data, mealType);
             } catch (SQLException | SaveMealException e) {
                 throw new RuntimeException(e);
             }
-            do {
-                showAvailableFood();
-                BeanFood beanFood = new BeanFood();
-                beanFood.setName(listOfAvailableFood.get(chooseFood() - 1));
-                listOfFoodChoice.add(beanFood);
-            } while (askAnotherFood());
+            selectFoods();
 
             if (showMealResume()) {
                 try {
@@ -60,10 +50,6 @@ public class MealRegisterControllerCLI {
                 }
                 try {
                     mealRegisterController.saveMeal();
-                } catch (SQLException | SaveMealException e) {
-                    throw new RuntimeException(e);
-                }
-                try {
                     mealRegisterController.mealResumeConfirmed();
                 } catch (SQLException | SaveMealException e) {
                     throw new RuntimeException(e);
@@ -73,6 +59,29 @@ public class MealRegisterControllerCLI {
                 listOfFoodChoice.clear();
             }
         }
+    }
+
+    private void selectFoods() {
+        do {
+            showAvailableFood();
+            BeanFood beanFood = new BeanFood();
+            Integer choice;
+            do {
+                choice = chooseFood();
+                if ((choice != null) && (choice > listOfAvailableFood.size())) {
+                    choice = null;
+                }
+            } while (choice == null);
+            beanFood.setName(listOfAvailableFood.get(choice - 1));
+            listOfFoodChoice.add(beanFood);
+        } while (askAnotherFood());
+    }
+
+
+    private void selectData() {
+        Printer.printMessage("Inserisci la data del pasto:");
+        Scanner scanner = new Scanner(System.in);
+        data =  scanner.nextLine();
     }
 
     private boolean showMealResume() {
@@ -88,9 +97,7 @@ public class MealRegisterControllerCLI {
     }
 
     private boolean askAnotherFood() {
-
         return askYesOrNo("Vuoi aggiungere un nuovo cibo?");
-
     }
 
     private boolean askYesOrNo(String message) {
@@ -112,7 +119,12 @@ public class MealRegisterControllerCLI {
 
     private Integer chooseFood() {
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+        String choice = scanner.nextLine();
+        if (choice.matches("\\d+")) {
+            return Integer.parseInt(choice);
+        } else {
+            return null;
+        }
     }
 
     private void showAvailableFood() {
@@ -132,23 +144,22 @@ public class MealRegisterControllerCLI {
 
     }
 
-    private MealType selectMealType() {
-        Printer.printMessage("Inserisci il tipo di pasto:");
-        Printer.printMessage("1)Colazione\n2)Pranzo\n3)Cena\n4)Spuntino");
-        Scanner scanner = new Scanner(System.in);
+    private void selectMealType() {
+        do {
+            Printer.printMessage("Inserisci il tipo di pasto:");
+            Printer.printMessage("1)Colazione\n2)Pranzo\n3)Cena\n4)Spuntino");
+            Scanner scanner = new Scanner(System.in);
 
-        MealType mealTypeInput;
-
-        switch (scanner.nextLine()) {
-            case "1" -> mealTypeInput = MealType.COLAZIONE;
-            case "2" -> mealTypeInput = MealType.PRANZO;
-            case "3" -> mealTypeInput = MealType.CENA;
-            case "4" -> mealTypeInput = MealType.SPUNTINO;
-            default -> {
-                Printer.printMessage("Inserisci un opzione valida");
-                return null;
+            switch (scanner.nextLine()) {
+                case "1" -> mealType = MealType.COLAZIONE;
+                case "2" -> mealType = MealType.PRANZO;
+                case "3" -> mealType = MealType.CENA;
+                case "4" -> mealType = MealType.SPUNTINO;
+                default -> {
+                    Printer.printMessage("Inserisci un opzione valida");
+                    mealType = null;
+                }
             }
-        }
-        return mealTypeInput;
+        }while (mealType == null);
     }
 }

@@ -9,13 +9,12 @@ import java.util.List;
 public class Meal {
 
 
-    private Integer MealID;
+    private Integer MealId;
 
     private String date;
 
     private MealType mealType;
     private Macro macro;
-
     private int calories;
 
     private List<Food> foodList;
@@ -94,12 +93,12 @@ public class Meal {
 
     public Integer getMealID() throws SQLException {
         MealDao mealDao = new MealDao();
-        MealID = mealDao.loadMealID(this);
-        return MealID;
+        MealId = mealDao.loadMealID(this);
+        return MealId;
     }
 
     public void setMealID(Integer mealID) {
-        this.MealID = mealID;
+        this.MealId = mealID;
     }
 
     public List<Food> getMealFoodList() {

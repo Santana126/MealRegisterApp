@@ -95,7 +95,6 @@ public class FoodListPageGraphicController {
             case "Spuntino" -> mealType = MealType.SPUNTINO;
             default -> showErrorOverlay();
         }
-        MealRegisterController mealRegisterController = new MealRegisterController();
         mealRegisterController.createMeal(dateTextField.getText(), mealType);
         mealRegisterController.addFoodToMeal(selectedFoodList);
         mealRegisterController.mealResume();

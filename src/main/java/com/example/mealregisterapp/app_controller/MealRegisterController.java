@@ -24,7 +24,6 @@ public class MealRegisterController {
 
     public void createMeal(String date, MealType mealType) throws SQLException, SaveMealException {
         meal = new Meal(date, mealType);
-        saveMeal();
     }
 
     public void addFoodToMeal(List<BeanFood> selectedFoodList) throws SQLException {

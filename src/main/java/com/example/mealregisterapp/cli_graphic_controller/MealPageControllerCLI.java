@@ -18,20 +18,32 @@ public class MealPageControllerCLI {
     }
 
     private void handleChoice(String nextLine) {
-        //ToDO Check User Input (String ecc...)
-        switch (Integer.parseInt(nextLine)){
-            case 1 -> {
-                MealRegisterControllerCLI mealRegisterControllerCLI = new MealRegisterControllerCLI();
-                mealRegisterControllerCLI.displayMealRegisterPage();
-            }
-            case 2 -> notImplementedYetMessage();
-            case 3 -> new HomePageControllerCLI().displayHomePage();
-            case 4 -> System.exit(1);
-            default -> {
-                Printer.printMessage("Scegli una funzione valida");
-                displayMealPage();
+
+        if (!checkInput(nextLine)) {
+            Printer.printMessage("Inserisci un input valido");
+            displayMealPage();
+        } else {
+            switch (Integer.parseInt(nextLine)) {
+                case 1 -> {
+                    MealRegisterControllerCLI mealRegisterControllerCLI = new MealRegisterControllerCLI();
+                    mealRegisterControllerCLI.displayMealRegisterPage();
+                }
+                case 2 -> notImplementedYetMessage();
+                case 3 -> new HomePageControllerCLI().displayHomePage();
+                case 4 -> System.exit(1);
+                default -> {
+                    Printer.printMessage("Scegli una funzione valida");
+                    displayMealPage();
+                }
             }
         }
 
+    }
+
+    private boolean checkInput(String nextLine) {
+        if (nextLine.length() > 1) {
+            return false;
+        }
+        return nextLine.matches("\\d+");
     }
 }
