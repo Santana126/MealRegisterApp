@@ -3,7 +3,7 @@ package com.example.mealregisterapp.graphiccontroller;
 import com.example.mealregisterapp.SceneManager;
 import com.example.mealregisterapp.app_controller.MealRegisterController;
 import com.example.mealregisterapp.bean.BeanFood;
-import com.example.mealregisterapp.exception.SaveMealException;
+import com.example.mealregisterapp.exception.*;
 import com.example.mealregisterapp.model.MealType;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -41,9 +41,16 @@ public class FoodListPageGraphicController {
         //Empty, need to throw Exception
     }
 
-    public void initialize() throws SQLException {
+    public void initialize() {
         foodListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        List<String> entities = mealRegisterController.loadAvailableFood();
+        List<String> entities = null;
+        try {
+            entities = mealRegisterController.loadAvailableFood();
+        } catch (NotAvailableFoodFounded e) {
+            //ToDO gestisci l'errore e stampa un messaggio
+        } catch (DaoConnectionException e) {
+            throw new RuntimeException(e);
+        }
         checkboxEntityMap = new HashMap<>();
 
         // Crea una HBox per ogni entità con una CheckBox
@@ -66,7 +73,7 @@ public class FoodListPageGraphicController {
     }
 
     @FXML
-    public void handleConfirmFood(ActionEvent event) throws SQLException, SaveMealException {
+    public void handleConfirmFood(ActionEvent event) throws SQLException, SaveFoodIntoMealFailedException, NoFoodFoundedException, DaoConnectionException {
         // Ottieni gli elementi selezionati dalla ListView
         ObservableList<HBox> allItems = foodListView.getItems();
         ObservableList<HBox> selectedItems = allItems.filtered(item -> {

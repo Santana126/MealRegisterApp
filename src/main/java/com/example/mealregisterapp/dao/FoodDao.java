@@ -1,5 +1,6 @@
 package com.example.mealregisterapp.dao;
 
+import com.example.mealregisterapp.exception.DaoConnectionException;
 import com.example.mealregisterapp.model.Food;
 
 import java.sql.Connection;
@@ -15,8 +16,12 @@ public class FoodDao {
     private PreparedStatement preparedStatement;
 
 
-    public FoodDao() throws SQLException {
-        connection = SingletonConnection.getInstance();
+    public FoodDao() throws DaoConnectionException {
+        try {
+            connection = SingletonConnection.getInstance();
+        }catch (SQLException e){
+            throw new DaoConnectionException("FoodDao connessione fallita");
+        }
     }
 
     public List<String> loadAvailableFoodList() throws SQLException {

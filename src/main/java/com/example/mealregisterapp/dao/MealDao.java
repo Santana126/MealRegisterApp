@@ -1,6 +1,7 @@
 package com.example.mealregisterapp.dao;
 
-import com.example.mealregisterapp.exception.SaveMealException;
+import com.example.mealregisterapp.exception.SaveFoodIntoMealFailedException;
+import com.example.mealregisterapp.exception.SaveMealFailedException;
 import com.example.mealregisterapp.model.Food;
 import com.example.mealregisterapp.model.Meal;
 
@@ -20,14 +21,14 @@ public class MealDao {
         connection = SingletonConnection.getInstance();
     }
 
-    public void saveMeal(Meal mealToSave) throws SQLException, SaveMealException {
+    public void saveMeal(Meal mealToSave) throws SQLException, SaveMealFailedException {
 
         preparedStatement = connection.prepareStatement("INSERT INTO Meal (Date, Type) VALUES (?, ?)");
         preparedStatement.setString(1, mealToSave.getDate());
         preparedStatement.setString(2, mealToSave.getMealTypeString());
         int rowAffected = preparedStatement.executeUpdate();
         if (rowAffected <= 0){
-            throw new SaveMealException("Inserimento fallito");
+            throw new SaveMealFailedException("Inserimento fallito");
         }
 
     }
@@ -48,13 +49,13 @@ public class MealDao {
         return result;
     }
 
-    public void saveFoodIntoMeal(Meal meal, Food food) throws SQLException, SaveMealException {
+    public void saveFoodIntoMeal(Meal meal, Food food) throws SQLException, SaveFoodIntoMealFailedException {
         preparedStatement = connection.prepareStatement("INSERT INTO MealFood (MealID, FoodName) VALUES (?, ?)");
         preparedStatement.setInt(1,meal.getMealID());
         preparedStatement.setString(2,food.foodName());
         int rowAffected = preparedStatement.executeUpdate();
         if (rowAffected <= 0){
-            throw new SaveMealException("Inserimento fallito");
+            throw new SaveFoodIntoMealFailedException("Inserimento cibo fallito");
         }
     }
 }

@@ -2,7 +2,7 @@ package com.example.mealregisterapp.cli_graphic_controller;
 
 import com.example.mealregisterapp.app_controller.MealRegisterController;
 import com.example.mealregisterapp.bean.BeanFood;
-import com.example.mealregisterapp.exception.SaveMealException;
+import com.example.mealregisterapp.exception.*;
 import com.example.mealregisterapp.model.MealType;
 import com.example.mealregisterapp.utils.ClearCLI;
 import com.example.mealregisterapp.utils.Printer;
@@ -35,24 +35,20 @@ public class MealRegisterControllerCLI {
         while (!saved) {
             selectData();
             selectMealType();
-            try {
-                mealRegisterController.createMeal(data, mealType);
-            } catch (SQLException | SaveMealException e) {
-                throw new RuntimeException(e);
-            }
+            mealRegisterController.createMeal(data, mealType);
             selectFoods();
 
             if (showMealResume()) {
                 try {
                     mealRegisterController.addFoodToMeal(listOfFoodChoice);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
+                } catch (NoFoodFoundedException | DaoConnectionException e) {
+                    Printer.error(e.getMessage());
                 }
                 try {
                     mealRegisterController.saveMeal();
                     mealRegisterController.mealResumeConfirmed();
-                } catch (SQLException | SaveMealException e) {
-                    throw new RuntimeException(e);
+                } catch (SQLException | SaveMealFailedException | SaveFoodIntoMealFailedException e) {
+                    Printer.error(e.getMessage());
                 }
                 saved = true;
             } else {
@@ -81,7 +77,7 @@ public class MealRegisterControllerCLI {
     private void selectData() {
         Printer.printMessage("Inserisci la data del pasto:");
         Scanner scanner = new Scanner(System.in);
-        data =  scanner.nextLine();
+        data = scanner.nextLine();
     }
 
     private boolean showMealResume() {
@@ -131,8 +127,8 @@ public class MealRegisterControllerCLI {
 
         try {
             listOfAvailableFood = mealRegisterController.loadAvailableFood();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (NotAvailableFoodFounded | DaoConnectionException e) {
+            Printer.error(e.getMessage());
         }
 
         Integer index = 1;
@@ -160,6 +156,6 @@ public class MealRegisterControllerCLI {
                     mealType = null;
                 }
             }
-        }while (mealType == null);
+        } while (mealType == null);
     }
 }

@@ -4,7 +4,7 @@ import com.example.mealregisterapp.bean.BeanFood;
 import com.example.mealregisterapp.bean.BeanMeal;
 import com.example.mealregisterapp.dao.FoodDao;
 import com.example.mealregisterapp.dao.MealDao;
-import com.example.mealregisterapp.exception.SaveMealException;
+import com.example.mealregisterapp.exception.*;
 import com.example.mealregisterapp.model.Food;
 import com.example.mealregisterapp.model.Meal;
 import com.example.mealregisterapp.model.MealType;
@@ -16,26 +16,32 @@ public class MealRegisterController {
 
     private Meal meal;
 
-    public void saveMeal() throws SQLException, SaveMealException {
+    public void saveMeal() throws SQLException, SaveMealFailedException {
         MealDao mealDao = new MealDao();
         mealDao.saveMeal(meal);
         BeanMeal.resetValues();
     }
 
-    public void createMeal(String date, MealType mealType) throws SQLException, SaveMealException {
+    public void createMeal(String date, MealType mealType) {
         meal = new Meal(date, mealType);
     }
 
-    public void addFoodToMeal(List<BeanFood> selectedFoodList) throws SQLException {
+    public void addFoodToMeal(List<BeanFood> selectedFoodList) throws NoFoodFoundedException, DaoConnectionException {
         for (BeanFood foodBean : selectedFoodList
         ) {
-            FoodDao foodDao = new FoodDao();
-            Food food = foodDao.loadFood(foodBean.getName());
+
+            Food food;
+            try {
+                FoodDao foodDao = new FoodDao();
+                food = foodDao.loadFood(foodBean.getName());
+            } catch (SQLException e) {
+                throw new NoFoodFoundedException("Cibo non trovato");
+            }
             meal.updateMeal(food);
         }
     }
 
-    public void mealResumeConfirmed() throws SQLException, SaveMealException {
+    public void mealResumeConfirmed() throws SQLException, SaveFoodIntoMealFailedException {
         MealDao mealDao = new MealDao();
         List<Food> foodList = meal.getMealFoodList();
         for (Food food : foodList) {
@@ -49,9 +55,14 @@ public class MealRegisterController {
          */
     }
 
-    public List<String> loadAvailableFood() throws SQLException {
+    public List<String> loadAvailableFood() throws NotAvailableFoodFounded, DaoConnectionException {
         FoodDao foodDao = new FoodDao();
-        //make some check on result
-        return foodDao.loadAvailableFoodList();
+        List<String> resultList;
+        try {
+            resultList = foodDao.loadAvailableFoodList();
+        } catch (SQLException e) {
+            throw new NotAvailableFoodFounded("Nessun cibo disponibile");
+        }
+        return resultList;
     }
 }

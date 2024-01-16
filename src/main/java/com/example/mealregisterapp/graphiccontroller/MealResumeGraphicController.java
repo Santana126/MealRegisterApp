@@ -3,7 +3,7 @@ package com.example.mealregisterapp.graphiccontroller;
 import com.example.mealregisterapp.SceneManager;
 import com.example.mealregisterapp.app_controller.MealRegisterController;
 import com.example.mealregisterapp.bean.BeanMeal;
-import com.example.mealregisterapp.exception.SaveMealException;
+import com.example.mealregisterapp.exception.SaveMealFailedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -35,7 +35,7 @@ public class MealResumeGraphicController implements Initializable {
 
 
     @FXML
-    public void handleConfirmResume(ActionEvent event) throws SQLException, SaveMealException, IOException {
+    public void handleConfirmResume(ActionEvent event) throws SQLException, IOException, SaveMealFailedException {
         mealRegisterController.saveMeal();
         sceneManager.showHomePage();
     }
