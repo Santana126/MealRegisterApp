@@ -9,7 +9,7 @@ import static com.example.mealregisterapp.utils.NotImplementedMessage.notImpleme
 
 public class AccountPageControllerCLI {
 
-    private final HomePageControllerCLI homePageControllerCLI = new HomePageControllerCLI();
+    private final UserHomePageControllerCLI userHomePageControllerCLI = new UserHomePageControllerCLI();
 
 
     public void displayAccountPage() {
@@ -27,7 +27,7 @@ public class AccountPageControllerCLI {
         switch (Integer.parseInt(nextLine)) {
             case 1, 2 -> notImplementedYetMessage();
 
-            case 3 -> homePageControllerCLI.displayHomePage();
+            case 3 -> userHomePageControllerCLI.displayHomePage();
 
             default -> {
                 Printer.printMessage("Scegli una funzione valida");

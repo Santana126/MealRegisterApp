@@ -1,6 +1,6 @@
 package com.example.mealregisterapp;
 
-import com.example.mealregisterapp.cli_graphic_controller.HomePageControllerCLI;
+import com.example.mealregisterapp.cli_graphic_controller.LoginControllerCLI;
 import com.example.mealregisterapp.utils.Printer;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -26,8 +26,10 @@ public class MainClass extends Application {
             while (true){
 
                 if (choice == 1) {
-                HomePageControllerCLI homePageControllerCLI = new HomePageControllerCLI();
-                homePageControllerCLI.displayHomePage();
+                    LoginControllerCLI loginControllerCLI = new LoginControllerCLI();
+                    loginControllerCLI.displayLoginPage();
+                //UserHomePageControllerCLI userHomePageControllerCLI = new UserHomePageControllerCLI();
+                //userHomePageControllerCLI.displayHomePage();
             } else if (choice == 2) {
                 launch();
                 System.exit(0);

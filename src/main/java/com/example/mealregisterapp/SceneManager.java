@@ -54,14 +54,26 @@ public class SceneManager {
         loadOverlay(loader);
     }
 
+    public void showErrorOverlay(String errorMessage) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/graphics/errorOverlay.fxml"));
+        loadOverlay(loader,true,errorMessage);
+    }
+
     private void loadOverlay(FXMLLoader loader) throws IOException {
+        loadOverlay(loader, false,null);
+    }
+
+
+    private void loadOverlay(FXMLLoader loader, boolean error,String errorMessage) throws IOException {
         Parent root = loader.load();
         OverlayController controller = loader.getController();
         Stage overlayStage = new Stage(StageStyle.UNDECORATED);
         overlayStage.initModality(Modality.APPLICATION_MODAL);
         overlayStage.initOwner(stage);
         overlayStage.setScene(new Scene(root));
+        if(error) controller.setErrorMessage(errorMessage);
         controller.setOverlayStage(overlayStage);
+
         overlayStage.showAndWait();
     }
 
@@ -85,5 +97,24 @@ public class SceneManager {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+    public void showSignupPage() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/graphics/signupPage.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
 
+    public void showChefSignupPage() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/graphics/chefSignupPage.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
+
+    public void showUserSignupPage() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/graphics/userSignupPage.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
 }

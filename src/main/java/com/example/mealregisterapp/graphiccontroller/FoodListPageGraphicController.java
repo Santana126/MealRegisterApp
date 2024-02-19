@@ -46,10 +46,8 @@ public class FoodListPageGraphicController {
         List<String> entities = null;
         try {
             entities = mealRegisterController.loadAvailableFood();
-        } catch (NotAvailableFoodFounded e) {
+        } catch (NotAvailableFoodFounded | DaoConnectionException e) {
             //ToDO gestisci l'errore e stampa un messaggio
-        } catch (DaoConnectionException e) {
-            throw new RuntimeException(e);
         }
         checkboxEntityMap = new HashMap<>();
 

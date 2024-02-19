@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import static com.example.mealregisterapp.utils.NotImplementedMessage.notImplementedYetMessage;
 
-public class HomePageControllerCLI {
+public class UserHomePageControllerCLI {
 
 
     public void displayHomePage() {

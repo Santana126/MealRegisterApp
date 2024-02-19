@@ -29,7 +29,7 @@ public class MealPageControllerCLI {
                     mealRegisterControllerCLI.displayMealRegisterPage();
                 }
                 case 2 -> notImplementedYetMessage();
-                case 3 -> new HomePageControllerCLI().displayHomePage();
+                case 3 -> new UserHomePageControllerCLI().displayHomePage();
                 case 4 -> System.exit(1);
                 default -> {
                     Printer.printMessage("Scegli una funzione valida");
