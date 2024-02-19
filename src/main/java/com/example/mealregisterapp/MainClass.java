@@ -28,8 +28,6 @@ public class MainClass extends Application {
                 if (choice == 1) {
                     LoginControllerCLI loginControllerCLI = new LoginControllerCLI();
                     loginControllerCLI.displayLoginPage();
-                //UserHomePageControllerCLI userHomePageControllerCLI = new UserHomePageControllerCLI();
-                //userHomePageControllerCLI.displayHomePage();
             } else if (choice == 2) {
                 launch();
                 System.exit(0);

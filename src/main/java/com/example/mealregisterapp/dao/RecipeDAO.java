@@ -23,10 +23,11 @@ public class RecipeDAO {
     }
 
     public void saveRecipe(Recipe recipe){
-
+        //Not Implemented Yet
     }
 
     public Recipe loadRecipe(String name){
+        //Take recipe from DB with the name of the recipe
         return new Recipe();
     }
 }

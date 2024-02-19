@@ -13,7 +13,7 @@ public class RecipeBean {
     private String description;
 
     public void seePreview(){
-
+        //see some details of the Recipe
     }
 
 }

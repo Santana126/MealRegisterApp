@@ -1,6 +1,5 @@
 package com.example.mealregisterapp.dao;
 
-import com.example.mealregisterapp.exception.NotFoundException;
 import com.example.mealregisterapp.model.UserModel;
 
 import java.io.BufferedReader;

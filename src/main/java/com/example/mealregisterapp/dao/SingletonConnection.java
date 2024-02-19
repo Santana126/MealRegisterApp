@@ -10,7 +10,6 @@ import java.util.Properties;
 public class SingletonConnection {
     private static Connection connection;
 
-    //private static final String URL="jdbc:sqlite:src/main/resources/com/example/mealregisterapp/database/MealDB";
     private SingletonConnection() throws SQLException {
         dataBaseConnection();
     }
@@ -35,7 +34,6 @@ public class SingletonConnection {
         } catch (IOException | ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-        //connection = DriverManager.getConnection(URL);
         if (connection == null){
             System.exit(-1);
         }

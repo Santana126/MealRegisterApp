@@ -4,6 +4,10 @@ public class Settings {
 
     private static String daoImpl;
 
+    private Settings(){
+        //Costruttore privato per metodi static
+    }
+
     public static String daoConfig() {
         return daoImpl;
     }

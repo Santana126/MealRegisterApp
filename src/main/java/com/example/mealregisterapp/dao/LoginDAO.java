@@ -15,7 +15,7 @@ public class LoginDAO {
 
     private static PreparedStatement preparedStatement;
 
-    private LoginDAO() throws DaoConnectionException {
+    private LoginDAO() {
 
 
     }
@@ -24,13 +24,11 @@ public class LoginDAO {
 
         int type = 0;
         try {
-            try {
-                connection = SingletonConnection.getInstance();
-            } catch (SQLException e) {
-                throw new DaoConnectionException("LoginDAO connessione fallita");
-            }
+
+            connection = SingletonConnection.getInstance();
+
             // Prendo il result set della query, lo faccio usando la classe Queries in modo tale da creare indipendenza tra il db e il modo in cui vengono formulate le query
-            preparedStatement = connection.prepareStatement(Queries.checkLogin(email,password));
+            preparedStatement = connection.prepareStatement(Queries.checkLogin(email, password));
             ResultSet resultSet = preparedStatement.executeQuery();
 
 
@@ -47,7 +45,7 @@ public class LoginDAO {
             // Clean-up dell'ambiente
             resultSet.close();
 
-        } catch (NotFoundException | SQLException | DaoConnectionException e) {
+        } catch (NotFoundException | SQLException e) {
             e.printStackTrace();
         }
         return type;

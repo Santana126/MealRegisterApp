@@ -23,7 +23,7 @@ public class FoodInfoDAO {
     }
 
     public FoodBean foodInfo(Ingredient ingredient){
-
+        //Turn Ingredient into a foodBean with info about ingredient
         return new FoodBean();
     }
 

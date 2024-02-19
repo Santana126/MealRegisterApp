@@ -11,6 +11,10 @@ import java.sql.SQLException;
 
 public class ChefDAO {
 
+    private ChefDAO(){
+        //Costruttore privato perché la classe contiene metodi statici
+    }
+
 
     public static ChefModel retrieveChefByEmail(String email) {
 
