@@ -1,5 +1,6 @@
 package com.example.mealregisterapp.dao;
 
+import com.example.mealregisterapp.exception.RetriveUserCSVEXception;
 import com.example.mealregisterapp.model.UserModel;
 
 import java.io.BufferedReader;
@@ -14,7 +15,7 @@ public class UserDAOCSV implements UserDAO {
     private static final int EMAIL = 2;
 
     @Override
-    public UserModel retrieveUserById(int userId) {
+    public UserModel retrieveUserById(int userId) throws RetriveUserCSVEXception {
         UserModel user = null;
         File file = new File(CSV_FILE_NAME);
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))){
@@ -30,14 +31,14 @@ public class UserDAOCSV implements UserDAO {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RetriveUserCSVEXception(e.getMessage());
         }
 
         return user;
     }
 
     @Override
-    public UserModel retrieveUserByEmail(String email) {
+    public UserModel retrieveUserByEmail(String email) throws RetriveUserCSVEXception {
         UserModel user = null;
         File file = new File(CSV_FILE_NAME);
 
@@ -55,7 +56,7 @@ public class UserDAOCSV implements UserDAO {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RetriveUserCSVEXception(e.getMessage());
         }
         return user;
     }

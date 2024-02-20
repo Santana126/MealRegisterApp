@@ -2,6 +2,8 @@ package com.example.mealregisterapp.dao;
 
 import com.example.mealregisterapp.dao.queries.Queries;
 import com.example.mealregisterapp.exception.NotFoundException;
+import com.example.mealregisterapp.exception.RetriveUserCSVEXception;
+import com.example.mealregisterapp.exception.RetriveUserException;
 import com.example.mealregisterapp.model.UserModel;
 
 import java.sql.Connection;
@@ -15,7 +17,7 @@ public class UserDAOJDBC implements UserDAO{
 
     private PreparedStatement preparedStatement;
     @Override
-    public UserModel retrieveUserById(int userId) throws NotFoundException {
+    public UserModel retrieveUserById(int userId) throws NotFoundException, RetriveUserException {
 
         UserModel user = null;
 
@@ -46,14 +48,14 @@ public class UserDAOJDBC implements UserDAO{
 
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            throw new RetriveUserException(e.getMessage());
         }
 
         return user;
     }
 
     @Override
-    public UserModel retrieveUserByEmail(String email) throws NotFoundException {
+    public UserModel retrieveUserByEmail(String email) throws NotFoundException, RetriveUserCSVEXception {
         UserModel user = null;
 
         try {
@@ -82,7 +84,7 @@ public class UserDAOJDBC implements UserDAO{
 
         }
         catch (SQLException  e) {
-            e.printStackTrace();
+            throw new RetriveUserCSVEXception(e.getMessage());
         }
 
         return user;

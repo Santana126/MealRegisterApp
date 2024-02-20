@@ -3,9 +3,7 @@ package com.example.mealregisterapp.graphiccontroller;
 import com.example.mealregisterapp.SceneManager;
 import com.example.mealregisterapp.app_controller.LoginController;
 import com.example.mealregisterapp.bean.LoginBean;
-import com.example.mealregisterapp.exception.EmailFormatException;
-import com.example.mealregisterapp.exception.NotFoundException;
-import com.example.mealregisterapp.exception.UserNotFoundException;
+import com.example.mealregisterapp.exception.*;
 import com.example.mealregisterapp.session.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -54,7 +52,8 @@ public class LoginGraphicController {
                 sceneManager.showHomePage();
             } else
                 throw new UserNotFoundException();
-        } catch (EmailFormatException | UserNotFoundException | NotFoundException | SQLException e) {
+        } catch (EmailFormatException | UserNotFoundException | NotFoundException | SQLException |
+                 RetriveUserException | CheckLoginException | RetriveUserCSVEXception e) {
             sceneManager.showErrorOverlay(e.getMessage());
         }
     }

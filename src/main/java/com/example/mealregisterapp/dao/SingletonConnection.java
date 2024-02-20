@@ -1,5 +1,7 @@
 package com.example.mealregisterapp.dao;
 
+import com.example.mealregisterapp.exception.DataBaseConnectionException;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,11 +13,11 @@ import java.util.Properties;
 public class SingletonConnection {
     private static Connection connection;
 
-    private SingletonConnection(){
+    private SingletonConnection() throws DataBaseConnectionException {
         dataBaseConnection();
     }
 
-    private static void dataBaseConnection() {
+    private static void dataBaseConnection() throws DataBaseConnectionException {
 
         try (InputStream input = new FileInputStream("src/main/res/connection.properties")) {
             Properties properties = new Properties();
@@ -27,16 +29,20 @@ public class SingletonConnection {
 
             connection = DriverManager.getConnection(connection_url, user, pass);
         } catch (IOException | SQLException e) {
-            e.printStackTrace();
+            throw new DataBaseConnectionException(e.getMessage());
         }
         if (connection == null){
             System.exit(-1);
         }
     }
 
-    public static Connection getInstance() throws SQLException {
+    public static Connection getInstance(){
         if (connection == null) {
-            new SingletonConnection();
+            try {
+                new SingletonConnection();
+            } catch (DataBaseConnectionException e) {
+                throw new RuntimeException(e);
+            }
         }
         return connection;
     }

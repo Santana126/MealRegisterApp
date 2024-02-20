@@ -4,7 +4,10 @@ import com.example.mealregisterapp.bean.ChefBean;
 import com.example.mealregisterapp.bean.LoginBean;
 import com.example.mealregisterapp.bean.UserBean;
 import com.example.mealregisterapp.dao.*;
+import com.example.mealregisterapp.exception.CheckLoginException;
 import com.example.mealregisterapp.exception.NotFoundException;
+import com.example.mealregisterapp.exception.RetriveUserCSVEXception;
+import com.example.mealregisterapp.exception.RetriveUserException;
 import com.example.mealregisterapp.model.ChefModel;
 import com.example.mealregisterapp.model.UserModel;
 import com.example.mealregisterapp.session.Session;
@@ -15,12 +18,12 @@ import java.sql.SQLException;
 public class LoginController {
 
 
-    public void checkLogin(LoginBean loginBean) {
+    public void checkLogin(LoginBean loginBean) throws CheckLoginException {
         int type = LoginDAO.checkLogin(loginBean.getEmail(), loginBean.getPassword());
         loginBean.setAccountType(type);
     }
 
-    public void completeUserLogin(LoginBean loginBean) throws NotFoundException {
+    public void completeUserLogin(LoginBean loginBean) throws NotFoundException, RetriveUserCSVEXception {
         UserDAO userDAO;
         Settings.setDaoImpl("JDBC");
         if(Settings.daoConfig().equals("JDBC")){
@@ -34,7 +37,7 @@ public class LoginController {
 
     }
 
-    public void completeChefLogin(LoginBean loginBean) throws SQLException {
+    public void completeChefLogin(LoginBean loginBean) throws SQLException, RetriveUserException {
         ChefModel chefModel = ChefDAO.retrieveChefByEmail(loginBean.getEmail());
         ChefBean chefBean = new ChefBean(chefModel.getId(), chefModel.getName(), chefModel.getSurname(), chefModel.getWebsite());
         Session.setSessionInstance(chefBean);

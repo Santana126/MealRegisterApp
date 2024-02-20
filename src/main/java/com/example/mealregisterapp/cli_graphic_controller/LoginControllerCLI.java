@@ -2,9 +2,7 @@ package com.example.mealregisterapp.cli_graphic_controller;
 
 import com.example.mealregisterapp.app_controller.LoginController;
 import com.example.mealregisterapp.bean.LoginBean;
-import com.example.mealregisterapp.exception.EmailFormatException;
-import com.example.mealregisterapp.exception.NotFoundException;
-import com.example.mealregisterapp.exception.UserNotFoundException;
+import com.example.mealregisterapp.exception.*;
 import com.example.mealregisterapp.utils.Printer;
 
 import java.sql.SQLException;
@@ -72,7 +70,8 @@ public class LoginControllerCLI {
             } else {
                 throw new UserNotFoundException();
             }
-        } catch (EmailFormatException | UserNotFoundException | NotFoundException | SQLException e) {
+        } catch (EmailFormatException | UserNotFoundException | NotFoundException | SQLException |
+                 RetriveUserException | CheckLoginException | RetriveUserCSVEXception e) {
             Printer.error(e.getMessage());
             displayLoginPage();
         }

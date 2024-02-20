@@ -1,6 +1,7 @@
 package com.example.mealregisterapp.dao;
 
 import com.example.mealregisterapp.dao.queries.Queries;
+import com.example.mealregisterapp.exception.CheckLoginException;
 import com.example.mealregisterapp.exception.NotFoundException;
 
 import java.sql.Connection;
@@ -19,7 +20,7 @@ public class LoginDAO {
 
     }
 
-    public static int checkLogin(String email, String password) {
+    public static int checkLogin(String email, String password) throws CheckLoginException {
 
         int type = 0;
 
@@ -45,7 +46,7 @@ public class LoginDAO {
             resultSet.close();
 
         } catch (NotFoundException | SQLException e) {
-            e.printStackTrace();
+            throw new CheckLoginException(e.getMessage());
         }
         return type;
     }
