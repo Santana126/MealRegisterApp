@@ -41,13 +41,13 @@ public class FoodListPageGraphicController {
         //Empty, need to throw Exception
     }
 
-    public void initialize() {
+    public void initialize() throws IOException {
         foodListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         List<String> entities = null;
         try {
             entities = mealRegisterController.loadAvailableFood();
-        } catch (NotAvailableFoodFounded | DaoConnectionException e) {
-            //ToDO gestisci l'errore e stampa un messaggio
+        } catch (NotAvailableFoodFounded e) {
+            sceneManager.showErrorOverlay(e.getMessage());
         }
         checkboxEntityMap = new HashMap<>();
 

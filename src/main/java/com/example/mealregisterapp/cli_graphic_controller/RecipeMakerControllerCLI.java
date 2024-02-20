@@ -42,7 +42,7 @@ public class RecipeMakerControllerCLI {
         Scanner scanner = new Scanner(System.in);
         String cost = scanner.nextLine();
         if ((!ValidInputCheck.checkInputDigit(cost)) || (Integer.parseInt(cost) > 5) || (Integer.parseInt(cost) < 1)) {
-            Printer.printMessage("Insert a correct number...");
+            Printer.printMessage("Insert a valid number");
             return askRecipeCost();
         } else {
             Printer.printMessage("Confirm cost: " + cost);
@@ -60,7 +60,7 @@ public class RecipeMakerControllerCLI {
         Scanner scanner = new Scanner(System.in);
         String difficult = scanner.nextLine();
         if ((!ValidInputCheck.checkInputDigit(difficult)) || (Integer.parseInt(difficult) > 5) || (Integer.parseInt(difficult) < 1)) {
-            Printer.printMessage("Insert a correct number...");
+            Printer.printMessage("Insert a valid number");
             return askRecipeDifficult();
         } else {
             Printer.printMessage("Confirm difficult: " + difficult);

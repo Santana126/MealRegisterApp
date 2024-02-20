@@ -127,7 +127,7 @@ public class MealRegisterControllerCLI {
 
         try {
             listOfAvailableFood = mealRegisterController.loadAvailableFood();
-        } catch (NotAvailableFoodFounded | DaoConnectionException e) {
+        } catch (NotAvailableFoodFounded e) {
             Printer.error(e.getMessage());
         }
 

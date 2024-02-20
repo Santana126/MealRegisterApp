@@ -50,12 +50,10 @@ public class MealRegisterController {
     }
 
     public void mealResume() {
-        /*
-        Show meal Resume TODO
-         */
+        //Not implemented Yet
     }
 
-    public List<String> loadAvailableFood() throws NotAvailableFoodFounded, DaoConnectionException {
+    public List<String> loadAvailableFood() throws NotAvailableFoodFounded {
         FoodDao foodDao = new FoodDao();
         List<String> resultList;
         try {
