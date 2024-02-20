@@ -1,7 +1,6 @@
 package com.example.mealregisterapp.dao;
 
 import com.example.mealregisterapp.dao.queries.Queries;
-import com.example.mealregisterapp.exception.DaoConnectionException;
 import com.example.mealregisterapp.exception.NotFoundException;
 
 import java.sql.Connection;
@@ -23,6 +22,7 @@ public class LoginDAO {
     public static int checkLogin(String email, String password) {
 
         int type = 0;
+
         try {
 
             connection = SingletonConnection.getInstance();
@@ -32,13 +32,12 @@ public class LoginDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
 
+
             // Verifico se il result set è vuoto e nel caso lancio un’eccezione
-            if (!resultSet.first()) {
+            if (!resultSet.next()) {
                 throw new NotFoundException("No user found with " + email);
             }
-            resultSet.next();
-            // Riposiziono il cursore sul primo record del result set
-            resultSet.first();
+
 
             type = resultSet.getInt(1);
 

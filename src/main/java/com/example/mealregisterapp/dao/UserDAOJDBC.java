@@ -28,12 +28,11 @@ public class UserDAOJDBC implements UserDAO{
             ResultSet resultSet = preparedStatement.executeQuery();
 
             // Verifico se il result set è vuoto e nel caso lancio un’eccezione
-            if (!resultSet.first()) {
+            if (!resultSet.next()) {
                 throw new NotFoundException("No user find with the id: " + userId);
             }
 
-            // Riposiziono il cursore sul primo record del result set
-            resultSet.first();
+
             do {
                 String email = resultSet.getString("email");
 
@@ -65,11 +64,10 @@ public class UserDAOJDBC implements UserDAO{
             preparedStatement = connection.prepareStatement(Queries.selectUserByEmail(email));
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if (!resultSet.first()) {
+            if (!resultSet.next()) {
                 throw new NotFoundException("No user found with email: " + email);
             }
 
-            resultSet.first();
             do {
 
                 int userId = resultSet.getInt("userId");
