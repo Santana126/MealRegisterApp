@@ -20,7 +20,6 @@ public class RecipeMakerController {
 
         recipeMakerControllerCLI.displayRecipeResume(newRecipeBean, Session.getCurrentSession().getChefBean());
         recipeMakerControllerCLI.recipeMenu();
-        recipeMakerControllerCLI.addIngredientMenu(newRecipeBean);
     }
 
 

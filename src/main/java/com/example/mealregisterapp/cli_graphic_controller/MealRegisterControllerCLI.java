@@ -41,7 +41,7 @@ public class MealRegisterControllerCLI {
             if (showMealResume()) {
                 try {
                     mealRegisterController.addFoodToMeal(listOfFoodChoice);
-                } catch (NoFoodFoundedException | DaoConnectionException e) {
+                } catch (NoFoodFoundedException e) {
                     Printer.error(e.getMessage());
                 }
                 try {

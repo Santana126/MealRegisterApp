@@ -41,10 +41,7 @@ public class RecipeMakerControllerCLI {
         Printer.printMessage("Recipe cost (1 to 5): \n");
         Scanner scanner = new Scanner(System.in);
         String cost = scanner.nextLine();
-        if (!ValidInputCheck.checkInputDigit(cost)) {
-            Printer.printMessage("Insert a correct number...");
-            return askRecipeCost();
-        } else if ((Integer.parseInt(cost) > 5) || (Integer.parseInt(cost) < 1)) {
+        if ((!ValidInputCheck.checkInputDigit(cost)) || (Integer.parseInt(cost) > 5) || (Integer.parseInt(cost) < 1)) {
             Printer.printMessage("Insert a correct number...");
             return askRecipeCost();
         } else {
@@ -62,10 +59,7 @@ public class RecipeMakerControllerCLI {
         Printer.printMessage("Recipe difficult (1 to 5): \n");
         Scanner scanner = new Scanner(System.in);
         String difficult = scanner.nextLine();
-        if (!ValidInputCheck.checkInputDigit(difficult)) {
-            Printer.printMessage("Insert a correct number...");
-            return askRecipeDifficult();
-        } else if ((Integer.parseInt(difficult) > 5) || (Integer.parseInt(difficult) < 1)) {
+        if ((!ValidInputCheck.checkInputDigit(difficult)) || (Integer.parseInt(difficult) > 5) || (Integer.parseInt(difficult) < 1)) {
             Printer.printMessage("Insert a correct number...");
             return askRecipeDifficult();
         } else {
@@ -111,10 +105,7 @@ public class RecipeMakerControllerCLI {
         Printer.printMessage("Description: " + recipeBean.getDescription());
     }
 
-    public void addIngredientMenu(RecipeBean recipeBean) {
-        Printer.printPageTitle("Insert Ingredient to this Recipe");
 
-    }
 
     public void recipeMenu() {
         Printer.printPageTitle("Recipe Page");
@@ -169,13 +160,13 @@ public class RecipeMakerControllerCLI {
 
     public IngredientBean selectIngredient() {
 
+        Printer.printPageTitle("Insert Ingredient to this Recipe");
+
         String name = selectIngredientName();
 
         Float quantity = selectIngredientQuantity();
 
-        IngredientBean ingredientBean = new IngredientBean(name, quantity);
-
-        return ingredientBean;
+        return new IngredientBean(name, quantity);
     }
 
     private Float selectIngredientQuantity() {

@@ -26,7 +26,7 @@ public class MealRegisterController {
         meal = new Meal(date, mealType);
     }
 
-    public void addFoodToMeal(List<BeanFood> selectedFoodList) throws NoFoodFoundedException, DaoConnectionException {
+    public void addFoodToMeal(List<BeanFood> selectedFoodList) throws NoFoodFoundedException {
         for (BeanFood foodBean : selectedFoodList
         ) {
 
