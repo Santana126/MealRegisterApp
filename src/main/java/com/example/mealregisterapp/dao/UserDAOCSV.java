@@ -16,10 +16,8 @@ public class UserDAOCSV implements UserDAO {
     @Override
     public UserModel retrieveUserById(int userId) {
         UserModel user = null;
-
-        try {
-            File file = new File(CSV_FILE_NAME);
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+        File file = new File(CSV_FILE_NAME);
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))){
             String row;
             String[] data;
 
@@ -31,7 +29,6 @@ public class UserDAOCSV implements UserDAO {
                     user = getUserModule(email, data, userId);
                 }
             }
-            bufferedReader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -42,9 +39,10 @@ public class UserDAOCSV implements UserDAO {
     @Override
     public UserModel retrieveUserByEmail(String email) {
         UserModel user = null;
-        try {
-            File file = new File(CSV_FILE_NAME);
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+        File file = new File(CSV_FILE_NAME);
+
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+
             String row;
             String[] data;
 
@@ -56,9 +54,7 @@ public class UserDAOCSV implements UserDAO {
                     user = getUserModule(email, data, userId);
                 }
             }
-            bufferedReader.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return user;
@@ -67,7 +63,7 @@ public class UserDAOCSV implements UserDAO {
     private UserModel getUserModule(String email, String[] data, int userId) {
         UserModel user;
         String username = data[USERNAME];
-        user = new  UserModel(userId,  email,username);
+        user = new UserModel(userId, email, username);
         return user;
     }
 

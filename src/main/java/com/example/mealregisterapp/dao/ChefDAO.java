@@ -16,12 +16,13 @@ public class ChefDAO {
     }
 
 
-    public static ChefModel retrieveChefByEmail(String email) {
+    public static ChefModel retrieveChefByEmail(String email) throws SQLException {
+        PreparedStatement preparedStatement = null;
 
         ChefModel chefModel = null;
         try {
             Connection connection = SingletonConnection.getInstance();
-            PreparedStatement preparedStatement = connection.prepareStatement(Queries.selectChefByEmail(email));
+            preparedStatement = connection.prepareStatement(Queries.selectChefByEmail(email));
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (!resultSet.first()) {
@@ -37,6 +38,8 @@ public class ChefDAO {
             resultSet.close();
         } catch (SQLException | NotFoundException e) {
             e.printStackTrace();
+        }finally {
+            preparedStatement.close();
         }
         return chefModel;
     }

@@ -15,17 +15,17 @@ public abstract class GenericUserModel {
         this.email = email;
     }
 
-    public GenericUserModel(int id, int type) {
+    protected GenericUserModel(int id, int type) {
         this.id = id;
         this.type = type;
     }
 
-    public GenericUserModel(int id, String email) {
+    protected GenericUserModel(int id, String email) {
         this.id = id;
         this.email = email;
     }
 
-    public GenericUserModel() {
+    protected GenericUserModel() {
     }
 
     public int getId() {

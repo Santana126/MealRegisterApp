@@ -14,6 +14,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class LoginGraphicController {
 
@@ -29,11 +30,11 @@ public class LoginGraphicController {
     }
 
 
-    public void goToChefSignUp(ActionEvent event) throws IOException {
+    public void goToChefSignUp() throws IOException {
         this.sceneManager.showChefSignupPage();
     }
 
-    public void goToUserSignUp(ActionEvent event) throws IOException {
+    public void goToUserSignUp() throws IOException {
         this.sceneManager.showUserSignupPage();
     }
 
@@ -53,7 +54,7 @@ public class LoginGraphicController {
                 sceneManager.showHomePage();
             } else
                 throw new UserNotFoundException();
-        } catch (EmailFormatException | UserNotFoundException | NotFoundException e) {
+        } catch (EmailFormatException | UserNotFoundException | NotFoundException | SQLException e) {
             sceneManager.showErrorOverlay(e.getMessage());
         }
     }
@@ -66,7 +67,7 @@ public class LoginGraphicController {
     }
 
     @FXML
-    public void noLogin(ActionEvent event) throws IOException {
+    public void noLogin(ActionEvent event) {
         //lunch app with no Login as Guest
         Session.setSessionInstance(null);
     }

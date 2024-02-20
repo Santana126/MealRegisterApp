@@ -31,6 +31,7 @@ public class User implements Subscriber {
 
     @Override
     public void update(CookBookType cookBookType) {
-
+        //not implemented yet
+        //Observer method
     }
 }

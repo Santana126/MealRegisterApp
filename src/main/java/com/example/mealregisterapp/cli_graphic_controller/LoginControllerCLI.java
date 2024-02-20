@@ -7,6 +7,7 @@ import com.example.mealregisterapp.exception.NotFoundException;
 import com.example.mealregisterapp.exception.UserNotFoundException;
 import com.example.mealregisterapp.utils.Printer;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import static com.example.mealregisterapp.utils.NotImplementedMessage.notImplementedYetMessage;
@@ -71,7 +72,7 @@ public class LoginControllerCLI {
             } else {
                 throw new UserNotFoundException();
             }
-        } catch (EmailFormatException | UserNotFoundException | NotFoundException e) {
+        } catch (EmailFormatException | UserNotFoundException | NotFoundException | SQLException e) {
             Printer.error(e.getMessage());
             displayLoginPage();
         }

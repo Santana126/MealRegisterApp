@@ -11,33 +11,11 @@ import java.util.Properties;
 public class SingletonConnection {
     private static Connection connection;
 
-    private SingletonConnection() throws SQLException {
+    private SingletonConnection(){
         dataBaseConnection();
     }
 
     private static void dataBaseConnection() {
-/*
-        String user;
-        String password;
-        String url;
-        String driverClassName;
-
-        try {
-            Properties properties = loadProperties();
-            user = properties.getProperty("USER");
-            password = properties.getProperty("PASS");
-            url = properties.getProperty("DB_URL");
-            //driverClassName = properties.getProperty("DRIVER_CLASS_NAME");
-
-            //Class.forName(driverClassName);
-
-            connection = DriverManager.getConnection(url, user, password);
-
-        } catch (IOException | SQLException e) {
-            e.printStackTrace();
-        }
-
- */
 
         try (InputStream input = new FileInputStream("src/main/res/connection.properties")) {
             Properties properties = new Properties();
@@ -57,20 +35,9 @@ public class SingletonConnection {
     }
 
     public static Connection getInstance() throws SQLException {
-        try {
-            if (connection == null) {
-                new SingletonConnection();
-            }
-        } catch (SQLException e) {
-            throw new SQLException();
+        if (connection == null) {
+            new SingletonConnection();
         }
         return connection;
-    }
-
-    private static Properties loadProperties() throws IOException {
-        Properties properties = new Properties();
-        FileInputStream fileInputStream = new FileInputStream("src/main/res/connection.properties");
-        properties.load(fileInputStream);
-        return properties;
     }
 }

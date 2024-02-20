@@ -1,7 +1,5 @@
 package com.example.mealregisterapp.bean;
 
-import com.example.mealregisterapp.dao.CookBookDAO;
-
 public class CookBookBean {
 
     private String author;

@@ -10,6 +10,8 @@ import com.example.mealregisterapp.model.UserModel;
 import com.example.mealregisterapp.session.Session;
 import com.example.mealregisterapp.utils.Settings;
 
+import java.sql.SQLException;
+
 public class LoginController {
 
 
@@ -32,7 +34,7 @@ public class LoginController {
 
     }
 
-    public void completeChefLogin(LoginBean loginBean) {
+    public void completeChefLogin(LoginBean loginBean) throws SQLException {
         ChefModel chefModel = ChefDAO.retrieveChefByEmail(loginBean.getEmail());
         ChefBean chefBean = new ChefBean(chefModel.getId(), chefModel.getName(), chefModel.getSurname(), chefModel.getWebsite());
         Session.setSessionInstance(chefBean);

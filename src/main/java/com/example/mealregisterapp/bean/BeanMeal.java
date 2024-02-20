@@ -5,6 +5,10 @@ import com.example.mealregisterapp.model.MealType;
 
 public class BeanMeal {
 
+    private BeanMeal(){
+        //private constructor
+    }
+
     private static String date;
 
     private static MealType mealType;

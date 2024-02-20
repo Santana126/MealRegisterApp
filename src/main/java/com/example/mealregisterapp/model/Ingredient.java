@@ -8,6 +8,7 @@ public class Ingredient {
     private Integer calories;
 
     public void info(){
+        //not implemented yet
 
     }
 
