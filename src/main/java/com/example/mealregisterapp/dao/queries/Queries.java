@@ -1,5 +1,7 @@
 package com.example.mealregisterapp.dao.queries;
 
+import com.example.mealregisterapp.model.Recipe;
+
 public class Queries {
 
     private Queries() {
@@ -20,5 +22,9 @@ public class Queries {
 
     public static String selectChefByEmail(String email) {
         return "SELECT * FROM Chefs WHERE email = '" + email + "';";
+    }
+
+    public static String saveRecipe(Recipe recipe) {
+        return "INSERT INTO `cookbookapp`.`Recipe` (`name`,`description`,`difficult`, `cost`,`author`) VALUES ('"+ recipe.getName() +"', '" + recipe.getDescription() +"', '" + recipe.getDifficult() +"', '" + recipe.getCost() +"', " + recipe.getAuthor().getChefID() + ");";
     }
 }

@@ -35,7 +35,11 @@ public class ChefHomePageControllerCLI {
                     //si deve passare la sessione (contiene i dati riguardanti l'account che si sta utilizzando)
                     accountPageControllerCLI.displayAccountPage();
                 }
-                case 2, 3 -> NotImplementedMessage.notImplementedYetMessage();
+                case 2 -> {
+                    CookBookMainPageControllerCLI cookBookMainPageControllerCLI = new CookBookMainPageControllerCLI(this);
+                    cookBookMainPageControllerCLI.displayCookBookMainPage();
+                }
+                case 3 -> NotImplementedMessage.notImplementedYetMessage();
                 case 4 -> System.exit(1);
                 default -> {
                     Printer.printMessage("Inserisci una scelta valida");

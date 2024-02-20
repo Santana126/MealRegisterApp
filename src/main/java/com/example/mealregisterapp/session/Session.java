@@ -12,13 +12,16 @@ public class Session {
 
     private ChefBean chefBean;
 
+    private int type; //1 User; 2 Chef
 
     private Session(Object ob) {
         if(ob instanceof UserBean) {
             this.userBean = (UserBean) ob;
+            this.type = 1;
         }
         else if(ob instanceof ChefBean) {
-            chefBean = (ChefBean) ob;
+            this.type = 2;
+            this.chefBean = (ChefBean) ob;
         }
     }
 
@@ -42,8 +45,11 @@ public class Session {
         return userBean;
     }
 
-    public ChefBean getShelterBean() {
+    public ChefBean getChefBean() {
         return chefBean;
     }
 
+    public int getType() {
+        return type;
+    }
 }

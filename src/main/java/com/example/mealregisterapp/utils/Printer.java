@@ -18,6 +18,11 @@ public class Printer {
         printMessage("[Yes]/[No]");
     }
 
+    public static void printEndOfPage(){
+        printMessage("---------------------------");
+        printMessage("---------------------------");
+    }
+
     public static void error(String errorMessage) {
         System.err.println(errorMessage);
     }

@@ -1,5 +1,6 @@
 package com.example.mealregisterapp.cli_graphic_controller;
 
+import com.example.mealregisterapp.session.Session;
 import com.example.mealregisterapp.utils.ClearCLI;
 import com.example.mealregisterapp.utils.Printer;
 
@@ -28,14 +29,19 @@ public class UserHomePageControllerCLI {
             int choice = Integer.parseInt(nextLine);
             switch (choice) {
                 case 1 -> {
-                    AccountPageControllerCLI accountPageControllerCLI = new AccountPageControllerCLI();
-                    accountPageControllerCLI.displayAccountPage();
+                    if(Session.getCurrentSession() != null) {
+                        AccountPageControllerCLI accountPageControllerCLI = new AccountPageControllerCLI();
+                        accountPageControllerCLI.displayAccountPage();
+                    }else{
+                        Printer.printMessage("Login to use this function");
+                        displayHomePage();
+                    }
                 }
-                case 3, 4 -> notImplementedYetMessage();
                 case 2 -> {
                     MealPageControllerCLI mealPageControllerCLI = new MealPageControllerCLI();
                     mealPageControllerCLI.displayMealPage();
                 }
+                case 3, 4 -> notImplementedYetMessage();
                 case 5 -> {
                     Printer.printMessage("Grazie per aver utilizzato l'app");
                     System.exit(1);

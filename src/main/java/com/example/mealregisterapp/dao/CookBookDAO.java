@@ -1,11 +1,9 @@
 package com.example.mealregisterapp.dao;
 
 import com.example.mealregisterapp.bean.CookBookBean;
-import com.example.mealregisterapp.exception.DaoConnectionException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class CookBookDAO {
 
@@ -14,12 +12,8 @@ public class CookBookDAO {
     private PreparedStatement preparedStatement;
 
 
-    public CookBookDAO() throws DaoConnectionException {
-        try {
-            connection = SingletonConnection.getInstance();
-        }catch (SQLException e){
-            throw new DaoConnectionException("CookBookDao connessione fallita");
-        }
+    public CookBookDAO() {
+        connection = SingletonConnection.getInstance();
     }
 
     public CookBookBean loadCookBookPreview(){
