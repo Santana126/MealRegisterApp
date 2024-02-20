@@ -21,7 +21,8 @@ public class ChefHomePageControllerCLI {
 
     private void handleChoice(String nextLine) {
         if (!checkInputDigit(nextLine)) {
-            Printer.printMessage("Inserire un input valido");
+            Printer.printMessage("Sorry, your input is invalid");
+            Printer.printMessage("Retry");
             displayHomePage();
         } else {
             switch (Integer.parseInt(nextLine)) {

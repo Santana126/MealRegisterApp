@@ -21,12 +21,13 @@ public class UserHomePageControllerCLI {
     }
 
     private void handleChoice(String nextLine) {
+
         if (!checkInputDigit(nextLine)) {
             Printer.printMessage("Inserire un input valido");
             displayHomePage();
         } else {
-
-            switch (Integer.parseInt(nextLine)) {
+            int choice = Integer.parseInt(nextLine);
+            switch (choice) {
                 case 1 -> {
                     AccountPageControllerCLI accountPageControllerCLI = new AccountPageControllerCLI();
                     accountPageControllerCLI.displayAccountPage();
@@ -46,8 +47,6 @@ public class UserHomePageControllerCLI {
                 }
             }
         }
-
     }
-
 
 }
