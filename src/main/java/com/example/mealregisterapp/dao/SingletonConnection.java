@@ -23,16 +23,13 @@ public class SingletonConnection {
             Properties properties = new Properties();
             properties.load(input);
 
-            String connection_url = properties.getProperty("DB_URL");
+            String connectionUrl = properties.getProperty("DB_URL");
             String user = properties.getProperty("USER");
             String pass = properties.getProperty("PASS");
 
-            connection = DriverManager.getConnection(connection_url, user, pass);
+            connection = DriverManager.getConnection(connectionUrl, user, pass);
         } catch (IOException | SQLException e) {
             throw new DataBaseConnectionException(e.getMessage());
-        }
-        if (connection == null){
-            System.exit(-1);
         }
     }
 

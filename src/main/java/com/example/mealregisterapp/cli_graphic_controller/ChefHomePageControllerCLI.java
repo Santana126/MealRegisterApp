@@ -6,6 +6,8 @@ import com.example.mealregisterapp.utils.Printer;
 
 import java.util.Scanner;
 
+import static com.example.mealregisterapp.utils.ValidInputCheck.checkInputDigit;
+
 public class ChefHomePageControllerCLI {
 
     public void displayHomePage() {
@@ -18,7 +20,7 @@ public class ChefHomePageControllerCLI {
     }
 
     private void handleChoice(String nextLine) {
-        if (!checkInput(nextLine)) {
+        if (!checkInputDigit(nextLine)) {
             Printer.printMessage("Inserire un input valido");
             displayHomePage();
         } else {
@@ -38,11 +40,4 @@ public class ChefHomePageControllerCLI {
         }
     }
 
-
-    private boolean checkInput(String nextLine) {
-        if (nextLine.length() > 1) {
-            return false;
-        }
-        return nextLine.matches("\\d+");
-    }
 }
