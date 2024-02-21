@@ -10,6 +10,8 @@ import java.util.List;
 
 public class Recipe {
 
+
+    private String recipeId;
     private String name;
     private String description;
     private Integer difficult;
@@ -76,6 +78,10 @@ public class Recipe {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getRecipeId() {
+        return recipeId;
     }
 
     public Integer getDifficult() {

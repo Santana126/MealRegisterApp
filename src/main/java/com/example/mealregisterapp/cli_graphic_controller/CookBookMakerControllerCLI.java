@@ -71,13 +71,15 @@ public class CookBookMakerControllerCLI {
             Printer.printMessage("Scegli un operazione:\n");
             Printer.printMessage("1)View CookBook Resume\n2)View Recipe\n3)Insert Recipe\n4)Confirm CookBook\n");
             scanner = new Scanner(System.in);
+            Printer.printEndOfPage();
         } while (handleChoice(scanner.nextLine()));
         Printer.printEndOfPage();
     }
 
     private boolean handleChoice(String nextLine) {
-        if (!checkInputDigit(nextLine)) {
-            Printer.printMessage("Inserisci un input valido");
+        boolean condition = !checkInputDigit(nextLine);
+        if (condition) {
+            Printer.printMessage("Inserisci un input corretto");
             cookBookMenu();
         } else {
             int input = Integer.parseInt(nextLine);

@@ -27,7 +27,6 @@ public class RecipeDAO {
 
     public void saveRecipe(Recipe recipe) throws SaveRecipeException {
 
-        // Prendo il result set della query, lo faccio usando la classe Queries in modo tale da creare indipendenza tra il db e il modo in cui vengono formulate le query
         try {
             preparedStatement = connection.prepareStatement(Queries.saveRecipe(recipe));
             int rowAffected = preparedStatement.executeUpdate();

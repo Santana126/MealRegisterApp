@@ -9,11 +9,27 @@ import java.util.List;
 
 public class CookBook {
 
+    public String getTitle() {
+        return title;
+    }
+
+    public Chef getAuthor() {
+        return author;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
     private String title;
 
     private Chef author;
 
     private String description;
+
+    public List<Recipe> getRecipes() {
+        return recipes;
+    }
 
     private List<Recipe> recipes;
 
