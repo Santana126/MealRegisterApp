@@ -26,9 +26,9 @@ public class LoginController {
     public void completeUserLogin(LoginBean loginBean) throws NotFoundException, RetriveUserCSVEXception {
         UserDAO userDAO;
         Settings.setDaoImpl("JDBC");
-        if(Settings.daoConfig().equals("JDBC")){
+        if (Settings.daoConfig().equals("JDBC")) {
             userDAO = new UserDAOJDBC();
-        }else{
+        } else {
             userDAO = new UserDAOCSV();
         }
         UserModel userModel = userDAO.retrieveUserByEmail(loginBean.getEmail());
@@ -37,7 +37,7 @@ public class LoginController {
 
     }
 
-    public void completeChefLogin(LoginBean loginBean) throws SQLException, RetriveUserException {
+    public void completeChefLogin(LoginBean loginBean) throws RetriveUserException {
         ChefModel chefModel = ChefDAO.retrieveChefByEmail(loginBean.getEmail());
         ChefBean chefBean = new ChefBean(chefModel.getId(), chefModel.getName(), chefModel.getSurname(), chefModel.getEmail());
         Session.setSessionInstance(chefBean);

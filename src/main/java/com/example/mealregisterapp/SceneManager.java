@@ -147,7 +147,7 @@ public class SceneManager {
     }
 
     public void showCookBookListPage() {
-
+        //Not implemented yet
     }
 
     public void showNewCookBookPage() throws IOException {
