@@ -19,7 +19,7 @@ public class OverlayController {
     @FXML
     private void closeExitOverlay() {
         overlayStage.close();
-        HomePageGraphicController.exitConfirmed();
+        System.exit(0);
     }
 
     @FXML
