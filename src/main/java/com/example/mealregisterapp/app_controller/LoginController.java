@@ -13,8 +13,6 @@ import com.example.mealregisterapp.model.UserModel;
 import com.example.mealregisterapp.session.Session;
 import com.example.mealregisterapp.utils.Settings;
 
-import java.sql.SQLException;
-
 public class LoginController {
 
 

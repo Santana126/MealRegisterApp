@@ -12,7 +12,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class LoginGraphicController {
 
@@ -53,7 +52,7 @@ public class LoginGraphicController {
                 sceneManager.showChefHomePage();
             } else
                 throw new UserNotFoundException();
-        } catch (EmailFormatException | UserNotFoundException | NotFoundException | SQLException |
+        } catch (EmailFormatException | UserNotFoundException | NotFoundException |
                  RetriveUserException | CheckLoginException | RetriveUserCSVEXception e) {
             sceneManager.showErrorOverlay(e.getMessage());
         }

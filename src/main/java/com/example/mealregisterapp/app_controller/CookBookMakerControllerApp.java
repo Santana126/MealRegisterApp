@@ -6,6 +6,7 @@ import com.example.mealregisterapp.cli_graphic_controller.CookBookMakerControlle
 import com.example.mealregisterapp.dao.CookBookDAO;
 import com.example.mealregisterapp.dao.RecipeDAO;
 import com.example.mealregisterapp.exception.RecipeDaoException;
+import com.example.mealregisterapp.exception.SaveCookBookException;
 import com.example.mealregisterapp.model.CookBook;
 import com.example.mealregisterapp.session.Session;
 
@@ -41,6 +42,16 @@ public class CookBookMakerControllerApp {
         newCookBookBean.addRecipe(newRecipeBean);
     }
 
+    public void insertRecipeIntoCookBook(List<RecipeBean> selectedRecipeList, CookBookBean cookBookBean) {
+
+        for (RecipeBean recipeBean :
+                selectedRecipeList) {
+            cookBookBean.addRecipe(recipeBean);
+        }
+
+
+    }
+
     public List<RecipeBean> takeRecipeList() {
         RecipeDAO recipeDAO = new RecipeDAO();
         List<RecipeBean> recipeBeanList = new ArrayList<>();
@@ -53,14 +64,19 @@ public class CookBookMakerControllerApp {
         return recipeBeanList;
     }
 
-    public void confirmCookBook() {
+    public void confirmCookBook() throws SaveCookBookException {
         CookBook cookBook = new CookBook(newCookBookBean);
         CookBookDAO cookBookDAO = new CookBookDAO();
         try {
             cookBookDAO.saveCookBook(cookBook);
-        } catch (Exception e) {
-            CookBookMakerControllerCLI cookBookMakerControllerCLI = new CookBookMakerControllerCLI(this);
-            cookBookMakerControllerCLI.cookBookSaveError(e.getMessage());
+        } catch (SaveCookBookException e) {
+            throw new SaveCookBookException(e.getMessage());
         }
+    }
+
+    public void saveCurrentCookBookData(String title, String description) {
+        Session.getCurrentSession().getCookBookBean().setAuthor(Session.getCurrentSession().getChefBean());
+        Session.getCurrentSession().getCookBookBean().setTitle(title);
+        Session.getCurrentSession().getCookBookBean().setDescription(description);
     }
 }

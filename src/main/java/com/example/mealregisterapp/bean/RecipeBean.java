@@ -28,6 +28,10 @@ public class RecipeBean {
         this.description = description;
     }
 
+    public RecipeBean() {
+
+    }
+
     public void seePreview(){
         //see some details of the Recipe
     }

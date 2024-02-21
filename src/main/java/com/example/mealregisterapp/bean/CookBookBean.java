@@ -1,5 +1,6 @@
 package com.example.mealregisterapp.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CookBookBean {
@@ -13,7 +14,7 @@ public class CookBookBean {
         return recipeBeanList;
     }
 
-    private List<RecipeBean> recipeBeanList;
+    private List<RecipeBean> recipeBeanList = new ArrayList<>();
 
     public String getDescription() {
         return description;
@@ -65,5 +66,13 @@ public class CookBookBean {
 
     public void addRecipe(RecipeBean recipeBean) {
         this.recipeBeanList.add(recipeBean);
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setAuthor(ChefBean author) {
+        this.author = author;
     }
 }

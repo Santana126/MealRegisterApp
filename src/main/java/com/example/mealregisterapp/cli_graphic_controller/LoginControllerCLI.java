@@ -5,7 +5,6 @@ import com.example.mealregisterapp.bean.LoginBean;
 import com.example.mealregisterapp.exception.*;
 import com.example.mealregisterapp.utils.Printer;
 
-import java.sql.SQLException;
 import java.util.Scanner;
 
 import static com.example.mealregisterapp.utils.NotImplementedMessage.notImplementedYetMessage;
@@ -70,7 +69,7 @@ public class LoginControllerCLI {
             } else {
                 throw new UserNotFoundException();
             }
-        } catch (EmailFormatException | UserNotFoundException | NotFoundException | SQLException |
+        } catch (EmailFormatException | UserNotFoundException | NotFoundException |
                  RetriveUserException | CheckLoginException | RetriveUserCSVEXception e) {
             Printer.error(e.getMessage());
             displayLoginPage();

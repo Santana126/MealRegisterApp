@@ -3,6 +3,7 @@ package com.example.mealregisterapp.cli_graphic_controller;
 import com.example.mealregisterapp.app_controller.CookBookMakerControllerApp;
 import com.example.mealregisterapp.bean.CookBookBean;
 import com.example.mealregisterapp.bean.RecipeBean;
+import com.example.mealregisterapp.exception.SaveCookBookException;
 import com.example.mealregisterapp.session.Session;
 import com.example.mealregisterapp.utils.Printer;
 
@@ -99,7 +100,11 @@ public class CookBookMakerControllerCLI {
                     return true;
                 }
                 case 4 -> {
-                    cookBookMakerControllerApp.confirmCookBook();
+                    try {
+                        cookBookMakerControllerApp.confirmCookBook();
+                    } catch (SaveCookBookException e) {
+                        cookBookSaveError(e.getMessage());
+                    }
                     return false;
                 }
                 default -> {

@@ -156,4 +156,18 @@ public class SceneManager {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+
+    public void showRecipeListPage() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/graphics/recipeListPage.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
+
+    public void showCookBookResume() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/graphics/cookBookResumePage.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
 }

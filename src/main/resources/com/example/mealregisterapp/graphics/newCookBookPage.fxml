@@ -1,22 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mealregisterapp.graphiccontroller.CookBookPageGraphicController">
-   <Text layoutX="189.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New CookBook Page">
+<AnchorPane prefHeight="710.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mealregisterapp.graphiccontroller.CookBookMakerGraphicController">
+   <Text layoutX="439.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New CookBook Page">
       <font>
          <Font size="24.0" />
       </font>
    </Text>
-   <Button layoutX="48.0" layoutY="101.0" mnemonicParsing="false" onAction="#handleViewCookBooksClick" prefHeight="80.0" prefWidth="140.0" text="View my CookBooks" />
-   <Button layoutX="414.0" layoutY="101.0" mnemonicParsing="false" onAction="#handleNewCookBookClick" prefHeight="80.0" prefWidth="140.0" text="Create new CookBook">
+   <Button layoutX="697.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleViewRecipesClick" prefHeight="43.0" prefWidth="118.0" text="View Recipe" />
+   <Button layoutX="498.0" layoutY="495.0" mnemonicParsing="false" onAction="#handleConfirmCookBookClick" prefHeight="32.0" prefWidth="118.0" text="Confirm CookBook">
       <font>
          <Font size="11.0" />
       </font></Button>
-   <Button layoutX="48.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleViewRecipeClick" prefHeight="80.0" prefWidth="140.0" text="View Recipe" />
-   <Button layoutX="260.0" layoutY="287.0" mnemonicParsing="false" onAction="#handleHomePageClick" prefHeight="80.0" prefWidth="80.0" text="HomePage" />
-   <Button layoutX="414.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleCreateNewRecipeClick" prefHeight="80.0" prefWidth="140.0" text="Create new Recipe" />
+   <Button layoutX="284.0" layoutY="489.0" mnemonicParsing="false" onAction="#handleBackButtonClick" prefHeight="43.0" prefWidth="43.0" text="Back" />
+   <Button layoutX="498.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleInsertRecipeClick" prefHeight="43.0" prefWidth="118.0" text="Insert Recipe" />
+   <Button layoutX="306.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleCookBookResumeClick" prefHeight="43.0" prefWidth="118.0" text="CookBook Resume" />
+   <Text layoutX="306.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CookBook Title:" wrappingWidth="130.39995117187505">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Text>
+   <TextField fx:id="titleField" layoutX="446.0" layoutY="261.0" />
+   <Text layoutX="306.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" wrappingWidth="108.79997558593755">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Text>
+   <TextArea fx:id="descriptionTextArea" layoutX="446.0" layoutY="300.0" prefHeight="70.0" prefWidth="150.0" promptText="max 40 char" wrapText="true" />
 </AnchorPane>

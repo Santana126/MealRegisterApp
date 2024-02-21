@@ -1,6 +1,7 @@
 package com.example.mealregisterapp.session;
 
 import com.example.mealregisterapp.bean.ChefBean;
+import com.example.mealregisterapp.bean.CookBookBean;
 import com.example.mealregisterapp.bean.UserBean;
 
 
@@ -11,6 +12,9 @@ public class Session {
     private UserBean userBean;
 
     private ChefBean chefBean;
+
+
+    private CookBookBean cookBookBean = null;
 
     private int type; //1 User; 2 Chef
 
@@ -52,4 +56,24 @@ public class Session {
     public int getType() {
         return type;
     }
+
+    public boolean existCookBookBean(){
+        return (this.cookBookBean != null);
+    }
+
+    public CookBookBean getCookBookBean() {
+        if(this.cookBookBean == null){
+            this.cookBookBean = new CookBookBean();
+        }
+        return cookBookBean;
+    }
+
+    public void resetCookBookBean(){
+        this.cookBookBean = null;
+    }
+
+    public void setCookBookBean(CookBookBean cookBookBean) {
+        this.cookBookBean = cookBookBean;
+    }
+
 }
