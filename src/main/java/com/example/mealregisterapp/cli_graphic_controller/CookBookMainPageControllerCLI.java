@@ -43,7 +43,7 @@ public class CookBookMainPageControllerCLI {
                 case 4 -> createNewRecipe();
                 case 5 -> chefHomePageControllerCLI.displayHomePage();
                 default -> {
-                    Printer.printMessage("Inserisci un input valido");
+                    Printer.printMessage("Inserisci un input valido...");
                     displayCookBookMainPage();
                 }
             }
@@ -81,7 +81,7 @@ public class CookBookMainPageControllerCLI {
                 case 2,3 -> NotImplementedMessage.notImplementedYetMessage();
                 case 4 -> displayCookBookMainPage();
                 default -> {
-                    Printer.printMessage("Inserisci un input valido");
+                    Printer.printMessage("Inserisci un input valido..");
                     chooseAction(cookBookBeanList);
                 }
             }

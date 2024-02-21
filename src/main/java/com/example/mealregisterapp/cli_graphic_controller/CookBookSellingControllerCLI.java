@@ -19,7 +19,8 @@ public class CookBookSellingControllerCLI {
         if(!checkInputDigit(choice)){
             Printer.printMessage("Inserisci un input corretto");
             askCookBookToSell(size);
-        }if((Integer.parseInt(choice) > size) || (Integer.parseInt(choice) <= 0)){
+        }
+        if((Integer.parseInt(choice) > size) || (Integer.parseInt(choice) <= 0)){
             Printer.printMessage("Scegli un cookBook valido");
             askCookBookToSell(size);
         }
