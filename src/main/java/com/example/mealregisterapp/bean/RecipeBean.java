@@ -23,6 +23,11 @@ public class RecipeBean {
         this.description = description;
     }
 
+    public RecipeBean(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
     public void seePreview(){
         //see some details of the Recipe
     }
@@ -60,7 +65,7 @@ public class RecipeBean {
     }
 
     public void addIngredient(IngredientBean ingredientBean){
-        ingredientBeanList.add(ingredientBean);
+        this.ingredientBeanList.add(ingredientBean);
     }
 
     public List<IngredientBean> getIngredientBeanList() {

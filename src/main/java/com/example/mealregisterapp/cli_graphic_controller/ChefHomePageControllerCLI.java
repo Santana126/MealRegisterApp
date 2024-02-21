@@ -32,7 +32,6 @@ public class ChefHomePageControllerCLI {
             switch (Integer.parseInt(nextLine)) {
                 case 1 -> {
                     AccountPageControllerCLI accountPageControllerCLI = new AccountPageControllerCLI();
-                    //si deve passare la sessione (contiene i dati riguardanti l'account che si sta utilizzando)
                     accountPageControllerCLI.displayAccountPage();
                 }
                 case 2 -> {

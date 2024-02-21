@@ -7,6 +7,7 @@ public class ValidInputCheck {
     }
 
     public static boolean checkInputDigit(String input){
+        //Return true if the input is a single digit int
         if (input.length() > 1) {
             return false;
         }

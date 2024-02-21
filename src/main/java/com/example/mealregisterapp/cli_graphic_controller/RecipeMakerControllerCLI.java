@@ -115,8 +115,7 @@ public class RecipeMakerControllerCLI {
             Printer.printMessage("1)View Recipe Resume\n2)View Ingredient\n3)Insert new Ingredient\n4)Confirm Recipe\n");
             scanner = new Scanner(System.in);
         } while (handleChoice(scanner.nextLine()));
-
-
+        Printer.printEndOfPage();
     }
 
     private boolean handleChoice(String nextLine) {

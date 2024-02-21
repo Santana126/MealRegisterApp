@@ -1,5 +1,6 @@
 package com.example.mealregisterapp.cli_graphic_controller;
 
+import com.example.mealregisterapp.app_controller.CookBookMakerControllerApp;
 import com.example.mealregisterapp.app_controller.RecipeMakerController;
 import com.example.mealregisterapp.utils.ClearCLI;
 import com.example.mealregisterapp.utils.NotImplementedMessage;
@@ -51,7 +52,8 @@ public class CookBookMainPageControllerCLI {
     }
 
     private void newCookBook() {
-        NotImplementedMessage.notImplementedYetMessage();
+        CookBookMakerControllerApp cookBookMakerControllerApp = new CookBookMakerControllerApp();
+        cookBookMakerControllerApp.createNewCookBook();
     }
 
     private void cookBookList() {

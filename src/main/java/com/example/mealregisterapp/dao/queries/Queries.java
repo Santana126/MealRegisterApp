@@ -27,4 +27,8 @@ public class Queries {
     public static String saveRecipe(Recipe recipe) {
         return "INSERT INTO `cookbookapp`.`Recipe` (`name`,`description`,`difficult`, `cost`,`author`) VALUES ('"+ recipe.getName() +"', '" + recipe.getDescription() +"', '" + recipe.getDifficult() +"', '" + recipe.getCost() +"', " + recipe.getAuthor().getChefID() + ");";
     }
+
+    public static String loadChefRecipe(int chefID) {
+        return "SELECT * FROM Recipe WHERE author = "+chefID+";";
+    }
 }
