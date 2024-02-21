@@ -1,5 +1,6 @@
 package com.example.mealregisterapp.dao.queries;
 
+import com.example.mealregisterapp.bean.CookBookBean;
 import com.example.mealregisterapp.model.CookBook;
 import com.example.mealregisterapp.model.Recipe;
 
@@ -36,5 +37,13 @@ public class Queries {
 
     public static String saveCookBook(CookBook cookBook, Recipe recipe) {
         return "INSERT INTO `cookbookapp`.`CookBook` (`title`, `authorId`, `recipeId`, `description`) VALUES ('" + cookBook.getTitle() + "'," + cookBook.getAuthor().getChefID() + "," + recipe.getRecipeId() + ", '" + cookBook.getDescription() + "');";
+    }
+
+    public static String loadChefCookBooks(int chefID) {
+        return "SELECT * FROM CookBook WHERE authorId = '" + chefID + "';";
+    }
+
+    public static String sellCookBook(CookBookBean cookBook) {
+        return "UPDATE `cookbookapp`.`CookBook` SET isSelling = 1 WHERE authorId = '" + cookBook.getAuthor().getChefID() + "' AND title = '" + cookBook.getTitle() + "' ;";
     }
 }

@@ -1,11 +1,15 @@
 package com.example.mealregisterapp.cli_graphic_controller;
 
 import com.example.mealregisterapp.app_controller.CookBookMakerControllerApp;
+import com.example.mealregisterapp.app_controller.CookBookSellingController;
 import com.example.mealregisterapp.app_controller.RecipeMakerController;
+import com.example.mealregisterapp.bean.CookBookBean;
+import com.example.mealregisterapp.session.Session;
 import com.example.mealregisterapp.utils.ClearCLI;
 import com.example.mealregisterapp.utils.NotImplementedMessage;
 import com.example.mealregisterapp.utils.Printer;
 
+import java.util.List;
 import java.util.Scanner;
 
 import static com.example.mealregisterapp.utils.ValidInputCheck.checkInputDigit;
@@ -57,6 +61,45 @@ public class CookBookMainPageControllerCLI {
     }
 
     private void cookBookList() {
-        NotImplementedMessage.notImplementedYetMessage();
+        CookBookSellingController cookBookSellingController = new CookBookSellingController();
+        List<CookBookBean> cookBookBeanList = cookBookSellingController.takeCookBookList(Session.getCurrentSession().getChefBean());
+        showCookBookList(cookBookBeanList);
+        chooseAction(cookBookBeanList);
+    }
+
+    private void chooseAction(List<CookBookBean> cookBookBeanList) {
+        Printer.printMessage("------------------------");
+        Printer.printMessage("---Choose a function----");
+        Printer.printMessage("\n1)Sell CookBook\n2)Modify CookBook\n3)Delete CookBook\n4)Back");
+        Scanner scanner = new Scanner(System.in);
+        if(!checkInputDigit(scanner.nextLine())){
+            Printer.printMessage("Inserisci un input corretto");
+            chooseAction(cookBookBeanList);
+        }else {
+            switch (Integer.parseInt(scanner.nextLine())){
+                case 1 -> startCookBookSelling(cookBookBeanList);
+                case 2,3 -> NotImplementedMessage.notImplementedYetMessage();
+                case 4 -> displayCookBookMainPage();
+                default -> {
+                    Printer.printMessage("Inserisci un input valido");
+                    chooseAction(cookBookBeanList);
+                }
+            }
+        }
+    }
+
+    private void startCookBookSelling(List<CookBookBean> cookBookBeanList) {
+        CookBookSellingController cookBookSellingController = new CookBookSellingController();
+        cookBookSellingController.sellCookBookToUser(cookBookBeanList);
+    }
+
+    private void showCookBookList(List<CookBookBean> cookBookBeanList) {
+        Printer.printPageTitle("CookBooks");
+        int i = 1;
+        for (CookBookBean cookBookBean :
+                cookBookBeanList) {
+            Printer.printMessage("\n-------------------\n"+ i +"CookBook: " + cookBookBean.getTitle() + "\nAuthor: " + cookBookBean.getAuthor().getName() +" " + cookBookBean.getAuthor().getSurname() + "\nDescription: " + cookBookBean.getDescription());
+            i++;
+        }
     }
 }

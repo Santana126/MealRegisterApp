@@ -11,6 +11,8 @@ public class User implements Subscriber {
 
     private PreferencesBean preferences;
 
+    private List<String> inBox;
+
 
     public void addPreferences(List<CookBookType> newPreferences){
         for (CookBookType preference: newPreferences) {
@@ -30,7 +32,8 @@ public class User implements Subscriber {
     }
 
     @Override
-    public void update(CookBookType cookBookType) {
+    public void update() {
+        inBox.add("New CookBook Published");
         //not implemented yet
         //Observer method
     }
