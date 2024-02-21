@@ -22,9 +22,10 @@ public class LoginGraphicController {
     private TextField txtFieldEmail;
     @FXML
     private TextField txtFieldPass;
+
     @FXML
     public void goToSignUp() throws IOException {
-        this.sceneManager.showSignupPage();
+        this.sceneManager.showNotImplementedYetOverlay();
     }
 
 
@@ -45,11 +46,11 @@ public class LoginGraphicController {
 
             if (loginBean.getAccountType() == 1) {
                 loginController.completeUserLogin(loginBean);
-                sceneManager.showHomePage();
+                sceneManager.showUserHomePage();
             } else if (loginBean.getAccountType() == 2) {
                 loginController.completeChefLogin(loginBean);
                 //lunch Chef Page instead of classic home page
-                sceneManager.showHomePage();
+                sceneManager.showChefHomePage();
             } else
                 throw new UserNotFoundException();
         } catch (EmailFormatException | UserNotFoundException | NotFoundException | SQLException |
@@ -57,7 +58,6 @@ public class LoginGraphicController {
             sceneManager.showErrorOverlay(e.getMessage());
         }
     }
-
 
 
     @FXML
@@ -73,7 +73,7 @@ public class LoginGraphicController {
 
     @FXML
     public void enterLogin(KeyEvent keyEvent) throws IOException {
-        if( keyEvent.getCode() == KeyCode.ENTER ) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
             login();
         }
     }

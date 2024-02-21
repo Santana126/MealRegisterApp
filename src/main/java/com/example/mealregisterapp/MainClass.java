@@ -12,7 +12,7 @@ public class MainClass extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         SceneManager sceneManager = SceneManager.getInstance(stage);
-        sceneManager.showHomePage();
+        sceneManager.showLoginPage();
         stage.show();
     }
 

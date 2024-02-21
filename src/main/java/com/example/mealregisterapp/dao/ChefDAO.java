@@ -15,12 +15,12 @@ public class ChefDAO {
 
     private static PreparedStatement preparedStatement;
 
-    private ChefDAO(){
+    private ChefDAO() {
         //Costruttore privato perché la classe contiene metodi statici
     }
 
 
-    public static ChefModel retrieveChefByEmail(String email) throws SQLException, RetriveUserException {
+    public static ChefModel retrieveChefByEmail(String email) throws RetriveUserException {
 
         ChefModel chefModel = null;
         try {
@@ -28,17 +28,14 @@ public class ChefDAO {
             preparedStatement = connection.prepareStatement(Queries.selectChefByEmail(email));
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if (!resultSet.first()) {
+            if (!resultSet.next()) {
                 throw new NotFoundException("No chefs found with the email: " + email);
-            }
-
-            resultSet.first();
-            do {
+            } else {
                 int chefId = resultSet.getInt("chefId");
                 chefModel = setChefInfo(chefId, email, resultSet);
-
-            } while (resultSet.next());
+            }
             resultSet.close();
+
         } catch (SQLException | NotFoundException e) {
             throw new RetriveUserException(e.getMessage());
         }
@@ -47,17 +44,9 @@ public class ChefDAO {
 
     private static ChefModel setChefInfo(int chefId, String email, ResultSet resultSet) throws SQLException {
 
-        ChefModel chefModel = null;
         String chefName = resultSet.getString("name");
         String chefSurname = resultSet.getString("surname");
-        String username = resultSet.getString("username");
-        String webSite = resultSet.getString("website");
-        if (username != null) {
-            chefModel = new ChefModel(chefId, email, chefName, chefSurname, webSite, username);
-        } else {
-            chefModel = new ChefModel(chefId, email, chefName, chefSurname, webSite);
-        }
 
-        return chefModel;
+        return new ChefModel(chefId, email, chefName, chefSurname, null, null);
     }
 }

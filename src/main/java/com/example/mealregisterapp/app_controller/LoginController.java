@@ -39,7 +39,7 @@ public class LoginController {
 
     public void completeChefLogin(LoginBean loginBean) throws SQLException, RetriveUserException {
         ChefModel chefModel = ChefDAO.retrieveChefByEmail(loginBean.getEmail());
-        ChefBean chefBean = new ChefBean(chefModel.getId(), chefModel.getName(), chefModel.getSurname(), chefModel.getWebsite());
+        ChefBean chefBean = new ChefBean(chefModel.getId(), chefModel.getName(), chefModel.getSurname(), chefModel.getEmail());
         Session.setSessionInstance(chefBean);
 
     }
