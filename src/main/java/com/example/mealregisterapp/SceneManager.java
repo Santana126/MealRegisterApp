@@ -146,8 +146,11 @@ public class SceneManager {
         stage.setScene(scene);
     }
 
-    public void showCookBookListPage() {
-        //Not implemented yet
+    public void showCookBookListPage() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/mealregisterapp/graphics/cookBookListPage.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
 
     public void showNewCookBookPage() throws IOException {

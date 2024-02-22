@@ -4,7 +4,6 @@ import com.example.mealregisterapp.SceneManager;
 import com.example.mealregisterapp.app_controller.CookBookMakerControllerApp;
 import com.example.mealregisterapp.bean.RecipeBean;
 import com.example.mealregisterapp.exception.RecipeDaoException;
-import com.example.mealregisterapp.utils.Printer;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -77,8 +76,6 @@ public class AddRecipeIntoCookBookGraphicController {
             selectedRecipeList.get(i).setName(recipeBean.getName());
             selectedRecipeList.get(i).setDescription(recipeBean.getDescription());
             selectedRecipeList.get(i).setRecipeId(recipeBean.getRecipeId());
-            Printer.printMessage("RecipeBean recipe ID: " + recipeBean.getRecipeId());
-            Printer.printMessage("Selected recipe id: " + selectedRecipeList.get(i).getRecipeId());
             i++;
         }
 

@@ -12,7 +12,7 @@ public class CookBookPageGraphicController {
 
 
     @FXML
-    public void handleViewCookBooksClick(ActionEvent event) {
+    public void handleViewCookBooksClick(ActionEvent event) throws IOException {
         sceneManager.showCookBookListPage();
     }
 

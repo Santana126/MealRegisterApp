@@ -3,7 +3,6 @@ package com.example.mealregisterapp.graphiccontroller;
 import com.example.mealregisterapp.SceneManager;
 import com.example.mealregisterapp.app_controller.CookBookMakerControllerApp;
 import com.example.mealregisterapp.exception.SaveCookBookException;
-import com.example.mealregisterapp.model.Recipe;
 import com.example.mealregisterapp.session.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,19 +21,13 @@ public class CookBookMakerGraphicController {
     public TextArea descriptionTextArea;
 
 
-    public void makeCookBook() {
-        //not implemented yet
-    }
 
     public void modifyCookBook() {
         //not implemented yet
 
     }
 
-    public void addRecipeToCookBook(Recipe recipe) {
-        //not implemented yet
 
-    }
 
     public void makeNewRecipe() {
         //not implemented yet
@@ -46,10 +39,6 @@ public class CookBookMakerGraphicController {
 
     }
 
-    public void sellCookBook() {
-        //not implemented yet
-
-    }
 
     public void initialize() {
         if (Session.getCurrentSession().existCookBookBean()) {
