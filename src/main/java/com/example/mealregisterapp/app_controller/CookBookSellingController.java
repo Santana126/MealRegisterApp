@@ -2,7 +2,6 @@ package com.example.mealregisterapp.app_controller;
 
 import com.example.mealregisterapp.bean.ChefBean;
 import com.example.mealregisterapp.bean.CookBookBean;
-import com.example.mealregisterapp.cli_graphic_controller.CookBookSellingControllerCLI;
 import com.example.mealregisterapp.dao.CookBookDAO;
 import com.example.mealregisterapp.exception.LoadCookBookException;
 import com.example.mealregisterapp.exception.UpdateCookBookStatusException;
@@ -39,15 +38,13 @@ public class CookBookSellingController {
         //Not Implemented Yed
     }
 
-    public void sellCookBookToUser(List<CookBookBean> cookBookBeanList) {
-        CookBookSellingControllerCLI cookBookSellingControllerCLI = new CookBookSellingControllerCLI();
-        int choice = cookBookSellingControllerCLI.askCookBookToSell(cookBookBeanList.size());
+    public void sellCookBookToUser(List<CookBookBean> cookBookBeanList,int choice) throws UpdateCookBookStatusException {
 
         CookBookDAO cookBookDAO = new CookBookDAO();
         try {
             cookBookDAO.markCookBookAsSelling(cookBookBeanList.get(choice - 1));
         } catch (UpdateCookBookStatusException e) {
-            cookBookSellingControllerCLI.showErrorMessage(e.getMessage());
+            throw new UpdateCookBookStatusException(e.getMessage());
         }
 
         CookBookPublisher cookBookPublisher = new CookBookPublisher();
@@ -62,14 +59,13 @@ public class CookBookSellingController {
         //Not Implemented Yed
     }
 
-    public List<CookBookBean> takeCookBookList(ChefBean chefBean) {
+    public List<CookBookBean> takeCookBookList(ChefBean chefBean) throws LoadCookBookException {
         CookBookDAO cookBookDAO = new CookBookDAO();
         List<CookBookBean> cookBookBeanList = null;
         try {
             cookBookBeanList = cookBookDAO.loadAllCookBook(chefBean);
         } catch (LoadCookBookException e) {
-            CookBookSellingControllerCLI cookBookSellingControllerCLI = new CookBookSellingControllerCLI();
-            cookBookSellingControllerCLI.showErrorMessage(e.getMessage());
+            throw new LoadCookBookException(e.getMessage());
         }
         return cookBookBeanList;
     }

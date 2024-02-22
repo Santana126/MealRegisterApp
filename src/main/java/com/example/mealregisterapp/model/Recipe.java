@@ -27,9 +27,12 @@ public class Recipe {
 
     public Recipe(RecipeBean recipeBean){
         this.name = recipeBean.getName();
-        for (IngredientBean ingredientBean: recipeBean.getIngredientBeanList()) {
-            Ingredient ingredient = new Ingredient(ingredientBean);
-            this.ingredients.add(ingredient);
+
+        if(recipeBean.getIngredientBeanList() != null) {
+            for (IngredientBean ingredientBean : recipeBean.getIngredientBeanList()) {
+                Ingredient ingredient = new Ingredient(ingredientBean);
+                this.ingredients.add(ingredient);
+            }
         }
         this.description = recipeBean.getDescription();
         this.cost = recipeBean.getCost();

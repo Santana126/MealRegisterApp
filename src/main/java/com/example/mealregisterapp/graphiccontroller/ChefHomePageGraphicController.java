@@ -43,4 +43,8 @@ public class ChefHomePageGraphicController implements Initializable {
     public void handleCookBookPageClick(ActionEvent event) throws IOException {
         this.sceneManager.showCookBookPage();
     }
+
+    public void handleSettingsClick(ActionEvent event) throws IOException {
+        this.sceneManager.showNotImplementedYetOverlay();
+    }
 }

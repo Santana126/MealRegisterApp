@@ -3,6 +3,7 @@ package com.example.mealregisterapp.dao.queries;
 import com.example.mealregisterapp.bean.CookBookBean;
 import com.example.mealregisterapp.model.CookBook;
 import com.example.mealregisterapp.model.Recipe;
+import com.example.mealregisterapp.utils.Printer;
 
 public class Queries {
 
@@ -36,6 +37,7 @@ public class Queries {
     }
 
     public static String saveCookBook(CookBook cookBook, Recipe recipe) {
+        Printer.printMessage("('" +cookBook.getTitle() + "'," + cookBook.getAuthor().getChefID() + "," + recipe.getRecipeId() + ", '" + cookBook.getDescription() + "');");
         return "INSERT INTO `cookbookapp`.`CookBook` (`title`, `authorId`, `recipeId`, `description`) VALUES ('" + cookBook.getTitle() + "'," + cookBook.getAuthor().getChefID() + "," + recipe.getRecipeId() + ", '" + cookBook.getDescription() + "');";
     }
 

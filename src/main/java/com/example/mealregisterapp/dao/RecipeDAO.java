@@ -51,7 +51,7 @@ public class RecipeDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
-                recipeBeanList.add(new RecipeBean(resultSet.getString("name"),resultSet.getString("description")));
+                recipeBeanList.add(new RecipeBean(resultSet.getString("name"),resultSet.getString("description"),resultSet.getInt("recipeId")));
             }
 
         } catch (SQLException e) {

@@ -3,7 +3,7 @@ package com.example.mealregisterapp.graphiccontroller;
 import com.example.mealregisterapp.SceneManager;
 import com.example.mealregisterapp.app_controller.CookBookMakerControllerApp;
 import com.example.mealregisterapp.bean.RecipeBean;
-import com.example.mealregisterapp.session.Session;
+import com.example.mealregisterapp.exception.RecipeDaoException;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,12 +30,16 @@ public class AddRecipeIntoCookBookGraphicController {
 
     private List<RecipeBean> selectedRecipeList;
 
-    public void initialize() {
+    public void initialize() throws IOException {
         recipeListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         List<RecipeBean> recipes = null;
         CookBookMakerControllerApp cookBookMakerControllerApp = new CookBookMakerControllerApp();
 
-        recipes = cookBookMakerControllerApp.takeRecipeList();
+        try {
+            recipes = cookBookMakerControllerApp.takeRecipeList();
+        } catch (RecipeDaoException e) {
+            sceneManager.showErrorOverlay(e.getMessage());
+        }
         checkboxEntityMap = new HashMap<>();
 
         // Crea una HBox per ogni entità con una CheckBox
@@ -71,11 +75,12 @@ public class AddRecipeIntoCookBookGraphicController {
             selectedRecipeList.add(i, new RecipeBean());
             selectedRecipeList.get(i).setName(recipeBean.getName());
             selectedRecipeList.get(i).setDescription(recipeBean.getDescription());
+            selectedRecipeList.get(i).setRecipeId(recipeBean.getRecipeId());
             i++;
         }
 
         CookBookMakerControllerApp cookBookMakerControllerApp = new CookBookMakerControllerApp();
-        cookBookMakerControllerApp.insertRecipeIntoCookBook(selectedRecipeList, Session.getCurrentSession().getCookBookBean());
+        cookBookMakerControllerApp.insertRecipeIntoCookBook(selectedRecipeList);
         sceneManager.showNewCookBookPage();
     }
 

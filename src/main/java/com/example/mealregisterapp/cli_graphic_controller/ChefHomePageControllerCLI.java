@@ -35,7 +35,7 @@ public class ChefHomePageControllerCLI {
                     accountPageControllerCLI.displayAccountPage();
                 }
                 case 2 -> {
-                    CookBookMainPageControllerCLI cookBookMainPageControllerCLI = new CookBookMainPageControllerCLI(this);
+                    CookBookMainPageControllerCLI cookBookMainPageControllerCLI = new CookBookMainPageControllerCLI();
                     cookBookMainPageControllerCLI.displayCookBookMainPage();
                 }
                 case 3 -> NotImplementedMessage.notImplementedYetMessage();

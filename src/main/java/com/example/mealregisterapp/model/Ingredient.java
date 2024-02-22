@@ -9,17 +9,18 @@ public class Ingredient {
     private Macro macros;
     private Integer calories;
 
-    public void info(){
+    public void info() {
         //not implemented yet
 
     }
 
-    public Ingredient(IngredientBean ingredientBean){
+    public Ingredient(IngredientBean ingredientBean) {
         this.name = ingredientBean.getName();
         this.quantity = ingredientBean.getQuantity();
+
     }
 
-    public void updateQuantity(Float newQuantity){
+    public void updateQuantity(Float newQuantity) {
         this.quantity = newQuantity;
     }
 }

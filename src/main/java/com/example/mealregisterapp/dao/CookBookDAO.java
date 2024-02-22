@@ -8,6 +8,7 @@ import com.example.mealregisterapp.exception.SaveCookBookException;
 import com.example.mealregisterapp.exception.UpdateCookBookStatusException;
 import com.example.mealregisterapp.model.CookBook;
 import com.example.mealregisterapp.model.Recipe;
+import com.example.mealregisterapp.utils.Printer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,8 +29,12 @@ public class CookBookDAO {
     }
 
     public void saveCookBook(CookBook cookBook) throws SaveCookBookException {
+        int i = 1;
         for (Recipe recipe :
                 cookBook.getRecipes()) {
+
+            Printer.printMessage("Recipe " + i +" is " + recipe.getRecipeId() + " " + recipe.getName());
+            i++;
             try {
                 preparedStatement = connection.prepareStatement(Queries.saveCookBook(cookBook, recipe));
                 int rowAffected = preparedStatement.executeUpdate();

@@ -4,6 +4,7 @@ import com.example.mealregisterapp.app_controller.RecipeMakerController;
 import com.example.mealregisterapp.bean.ChefBean;
 import com.example.mealregisterapp.bean.IngredientBean;
 import com.example.mealregisterapp.bean.RecipeBean;
+import com.example.mealregisterapp.exception.SaveRecipeException;
 import com.example.mealregisterapp.utils.Printer;
 import com.example.mealregisterapp.utils.ValidInputCheck;
 
@@ -13,15 +14,17 @@ import static com.example.mealregisterapp.utils.ValidInputCheck.checkInputDigit;
 
 public class RecipeMakerControllerCLI {
 
-    RecipeMakerController recipeMakerController;
 
-    public RecipeMakerControllerCLI(RecipeMakerController recipeMakerController) {
-        this.recipeMakerController = recipeMakerController;
+    public void createRecipe() {
+        startPage();
+        RecipeMakerController recipeMakerController = new RecipeMakerController();
+        recipeMakerController.createNewRecipe(askRecipeName(), askRecipeDifficult(), askRecipeCost(), askRecipeDescription());
+        recipeMenu();
     }
 
-    public RecipeBean createRecipe() {
-        startPage();
-        return new RecipeBean(askRecipeName(), askRecipeDifficult(), askRecipeCost(), askRecipeDescription());
+    private void startPage() {
+        Printer.printPageTitle("New Recipe");
+        Printer.printMessage("Insert the Recipe Info");
     }
 
     private String askRecipeDescription() {
@@ -37,7 +40,7 @@ public class RecipeMakerControllerCLI {
         return description;
     }
 
-    private Integer askRecipeCost() {
+    private int askRecipeCost() {
         Printer.printMessage("Recipe cost (1 to 5): \n");
         Scanner scanner = new Scanner(System.in);
         String cost = scanner.nextLine();
@@ -71,8 +74,6 @@ public class RecipeMakerControllerCLI {
             }
             return Integer.parseInt(difficult);
         }
-
-
     }
 
     private String askRecipeName() {
@@ -86,23 +87,6 @@ public class RecipeMakerControllerCLI {
             return askRecipeName();
         }
         return name;
-    }
-
-    private void startPage() {
-        Printer.printPageTitle("New Recipe");
-        Printer.printMessage("Insert the Recipe Info");
-    }
-
-    public void displayRecipeResume(RecipeBean recipeBean, ChefBean chefBean) {
-        Printer.printPageTitle("Recipe Resume :)");
-        displayRecipe(recipeBean, chefBean.getName(), chefBean.getSurname());
-    }
-
-    private void displayRecipe(RecipeBean recipeBean, String name, String surname) {
-        Printer.printMessage("Name: " + recipeBean.getName() + "\nAuthor: " + name + " " + surname);
-        Printer.printMessage("Difficult (1 to 5): " + recipeBean.getDifficult());
-        Printer.printMessage("Cost (1 to 5): " + recipeBean.getCost());
-        Printer.printMessage("Description: " + recipeBean.getDescription());
     }
 
 
@@ -125,17 +109,16 @@ public class RecipeMakerControllerCLI {
         } else {
             switch (Integer.parseInt(nextLine)) {
                 case 1 -> {
-                    recipeMakerController.showRecipeResume();
+                    displayRecipeResume();
                     return true;
                 }
                 case 2 -> {
-                    recipeMakerController.viewIngredientOnRecipe();
+                    displayRecipeIngredients();
                     return true;
                 }
                     
                 case 3 -> {
-                    Printer.printPageTitle("Ingredient Page");
-                    recipeMakerController.insertNewIngredient();
+                    addIngredientToRecipe();
                     return true;
                 }
                 case 4 -> {
@@ -151,9 +134,37 @@ public class RecipeMakerControllerCLI {
         return true;
     }
 
+    private void addIngredientToRecipe() {
+        Printer.printPageTitle("Ingredient Page");
+        IngredientBean ingredientBean = selectIngredient();
+
+        RecipeMakerController recipeMakerController = new RecipeMakerController();
+        recipeMakerController.insertIngredientIntoRecipe(ingredientBean);
+    }
+
+
+    public void displayRecipeResume() {
+        Printer.printPageTitle("Recipe Resume :)");
+        RecipeMakerController recipeMakerController = new RecipeMakerController();
+        ChefBean chefBean = recipeMakerController.takeRecipeAuthor();
+        displayRecipe(recipeMakerController.takeRecipeResume(), chefBean.getName(), chefBean.getSurname());
+    }
+
+    private void displayRecipe(RecipeBean recipeBean, String name, String surname) {
+        Printer.printMessage("Name: " + recipeBean.getName() + "\nAuthor: " + name + " " + surname);
+        Printer.printMessage("Difficult (1 to 5): " + recipeBean.getDifficult());
+        Printer.printMessage("Cost (1 to 5): " + recipeBean.getCost());
+        Printer.printMessage("Description: " + recipeBean.getDescription());
+    }
+
 
     private void recipeConfirmed() {
-        recipeMakerController.confirmRecipe();
+        RecipeMakerController recipeMakerController = new RecipeMakerController();
+        try {
+            recipeMakerController.confirmRecipe();
+        } catch (SaveRecipeException e) {
+            recipeSaveError(e.getMessage());
+        }
 
     }
 
@@ -199,9 +210,11 @@ public class RecipeMakerControllerCLI {
         return name;
     }
 
-    public void displayRecipeIngredients(RecipeBean newRecipeBean) {
+    public void displayRecipeIngredients() {
+        RecipeMakerController recipeMakerController = new RecipeMakerController();
+        RecipeBean recipeBean = recipeMakerController.takeRecipeResume();
         Printer.printPageTitle("Recipe Ingredients");
-        for (IngredientBean ingredients: newRecipeBean.getIngredientBeanList()
+        for (IngredientBean ingredients: recipeBean.getIngredientBeanList()
              ) {
             Printer.printMessage("\n-- " + ingredients.getName());
         }

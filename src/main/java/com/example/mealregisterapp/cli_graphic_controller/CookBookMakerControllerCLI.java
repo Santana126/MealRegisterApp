@@ -3,10 +3,12 @@ package com.example.mealregisterapp.cli_graphic_controller;
 import com.example.mealregisterapp.app_controller.CookBookMakerControllerApp;
 import com.example.mealregisterapp.bean.CookBookBean;
 import com.example.mealregisterapp.bean.RecipeBean;
+import com.example.mealregisterapp.exception.RecipeDaoException;
 import com.example.mealregisterapp.exception.SaveCookBookException;
 import com.example.mealregisterapp.session.Session;
 import com.example.mealregisterapp.utils.Printer;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,17 +16,16 @@ import static com.example.mealregisterapp.utils.ValidInputCheck.checkInputDigit;
 
 public class CookBookMakerControllerCLI {
 
-    CookBookMakerControllerApp cookBookMakerControllerApp;
 
-    public CookBookMakerControllerCLI(CookBookMakerControllerApp cookBookMakerControllerApp) {
-        this.cookBookMakerControllerApp = cookBookMakerControllerApp;
-    }
 
-    public CookBookBean createCookBook() {
+    public void createCookBook() {
         Printer.printPageTitle("Cook Book Page");
 
-        return new CookBookBean(Session.getCurrentSession().getChefBean(), askCookBookTitle(), askDescription());
+        CookBookBean cookBookBean = new CookBookBean(Session.getCurrentSession().getChefBean(), askCookBookTitle(), askDescription());
+        CookBookMakerControllerApp cookBookMakerControllerApp = new CookBookMakerControllerApp();
+        cookBookMakerControllerApp.createNewCookBook(cookBookBean);
 
+        cookBookMenu();
     }
 
     private String askDescription() {
@@ -70,12 +71,14 @@ public class CookBookMakerControllerCLI {
         Scanner scanner;
         do {
             Printer.printMessage("Scegli un operazione:\n");
-            Printer.printMessage("1)View CookBook Resume\n2)View Recipe\n3)Insert Recipe\n4)Confirm CookBook\n");
+            Printer.printMessage("1)View CookBook Resume\n2)Insert Recipe\n3)Confirm CookBook\n4)Back");
             scanner = new Scanner(System.in);
             Printer.printEndOfPage();
         } while (handleChoice(scanner.nextLine()));
         Printer.printEndOfPage();
+        backPage();
     }
+
 
     private boolean handleChoice(String nextLine) {
         boolean condition = !checkInputDigit(nextLine);
@@ -86,25 +89,26 @@ public class CookBookMakerControllerCLI {
             int input = Integer.parseInt(nextLine);
             switch (input) {
                 case 1 -> {
-                    cookBookMakerControllerApp.showCookBookResume();
-                    return true;
-                }
-                case 2 -> {
-                    cookBookMakerControllerApp.viewRecipeOnCookBook();
+                    CookBookMakerControllerApp cookBookMakerControllerApp = new CookBookMakerControllerApp();
+                    displayCookBookResume(cookBookMakerControllerApp.takeCookBookResume());
                     return true;
                 }
 
-                case 3 -> {
+                case 2 -> {
                     Printer.printPageTitle("Recipe Page");
-                    cookBookMakerControllerApp.insertNewRecipe();
+                    insertRecipe();
                     return true;
                 }
-                case 4 -> {
+                case 3 -> {
                     try {
+                        CookBookMakerControllerApp cookBookMakerControllerApp = new CookBookMakerControllerApp();
                         cookBookMakerControllerApp.confirmCookBook();
                     } catch (SaveCookBookException e) {
-                        cookBookSaveError(e.getMessage());
+                        cookBookMakerError(e.getMessage());
                     }
+                    return false;
+                }
+                case 4 -> {
                     return false;
                 }
                 default -> {
@@ -117,32 +121,46 @@ public class CookBookMakerControllerCLI {
 
     }
 
+    private void backPage() {
+        CookBookMainPageControllerCLI cookBookMainPageControllerCLI = new CookBookMainPageControllerCLI();
+        cookBookMainPageControllerCLI.displayCookBookMainPage();
+
+    }
+
     public void displayCookBookResume(CookBookBean newCookBookBean) {
         Printer.printPageTitle("CookBook Resume");
-        displayCookBook(newCookBookBean);
+        displayCookBookDetails(newCookBookBean);
+        displayCookBookRecipes(newCookBookBean);
         Printer.printEndOfPage();
     }
 
-    private void displayCookBook(CookBookBean cookBookBean) {
+    private void displayCookBookDetails(CookBookBean cookBookBean) {
         Printer.printMessage("Title: " + cookBookBean.getTitle() + "\nAuthor: " + cookBookBean.getAuthor().getName() + " " + cookBookBean.getAuthor().getSurname());
         if (!cookBookBean.getDescription().equals("")) {
             Printer.printMessage("Description: " + cookBookBean.getDescription());
         }
+
     }
 
     public void displayCookBookRecipes(CookBookBean newCookBookBean) {
-        Printer.printPageTitle("CookBook Recipes");
+        Printer.printPageTitle("CookBook Recipes\n");
         for (RecipeBean recipe : newCookBookBean.getRecipeBeanList()
         ) {
             Printer.printMessage("\n-- Recipe: " + recipe.getName() + "\n   Description:" + recipe.getDescription());
         }
     }
 
-    public RecipeBean selectRecipe() {
+    public void insertRecipe() {
 
         Printer.printPageTitle("Insert Recipe into this CookBook");
-
-        return chooseRecipeFromList(cookBookMakerControllerApp.takeRecipeList());
+        CookBookMakerControllerApp cookBookMakerControllerApp = new CookBookMakerControllerApp();
+        List<RecipeBean> recipeBeanList = new ArrayList<>();
+        try {
+            recipeBeanList.add(chooseRecipeFromList(cookBookMakerControllerApp.takeRecipeList()));
+        } catch (RecipeDaoException e) {
+            cookBookMakerError(e.getMessage());
+        }
+        cookBookMakerControllerApp.insertRecipeIntoCookBook(recipeBeanList);
     }
 
     private RecipeBean chooseRecipeFromList(List<RecipeBean> recipeBeans) {
@@ -160,7 +178,7 @@ public class CookBookMakerControllerCLI {
         return recipeBeans.get(i - 1);
     }
 
-    public void cookBookSaveError(String message) {
+    public void cookBookMakerError(String message) {
         Printer.error("Error: " + message);
     }
 }

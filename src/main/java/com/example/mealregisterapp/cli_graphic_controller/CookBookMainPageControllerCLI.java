@@ -1,9 +1,8 @@
 package com.example.mealregisterapp.cli_graphic_controller;
 
-import com.example.mealregisterapp.app_controller.CookBookMakerControllerApp;
 import com.example.mealregisterapp.app_controller.CookBookSellingController;
-import com.example.mealregisterapp.app_controller.RecipeMakerController;
 import com.example.mealregisterapp.bean.CookBookBean;
+import com.example.mealregisterapp.exception.LoadCookBookException;
 import com.example.mealregisterapp.session.Session;
 import com.example.mealregisterapp.utils.ClearCLI;
 import com.example.mealregisterapp.utils.NotImplementedMessage;
@@ -16,12 +15,6 @@ import static com.example.mealregisterapp.utils.ValidInputCheck.checkInputDigit;
 
 public class CookBookMainPageControllerCLI {
 
-    private ChefHomePageControllerCLI chefHomePageControllerCLI;
-
-    public CookBookMainPageControllerCLI(ChefHomePageControllerCLI chefHomePageControllerCLICurrent) {
-        this.chefHomePageControllerCLI = chefHomePageControllerCLICurrent;
-    }
-
     public void displayCookBookMainPage() {
         ClearCLI.clear();
         Printer.printPageTitle("CookBook Page");
@@ -32,16 +25,19 @@ public class CookBookMainPageControllerCLI {
     }
 
     private void handleChoice(String nextLine) {
-        if(!checkInputDigit(nextLine)){
+        if (!checkInputDigit(nextLine)) {
             Printer.printMessage("Inserisci un input valido");
             displayCookBookMainPage();
-        }else {
-            switch (Integer.parseInt(nextLine)){
+        } else {
+            switch (Integer.parseInt(nextLine)) {
                 case 1 -> cookBookList();
                 case 2 -> newCookBook();
                 case 3 -> NotImplementedMessage.notImplementedYetMessage();
                 case 4 -> createNewRecipe();
-                case 5 -> chefHomePageControllerCLI.displayHomePage();
+                case 5 -> {
+                    ChefHomePageControllerCLI chefHomePageControllerCLI = new ChefHomePageControllerCLI();
+                    chefHomePageControllerCLI.displayHomePage();
+                }
                 default -> {
                     Printer.printMessage("Inserisci un input valido...");
                     displayCookBookMainPage();
@@ -51,20 +47,26 @@ public class CookBookMainPageControllerCLI {
     }
 
     private void createNewRecipe() {
-        RecipeMakerController recipeMakerController = new RecipeMakerController();
-        recipeMakerController.createNewRecipe();
+        RecipeMakerControllerCLI recipeMakerControllerCLI = new RecipeMakerControllerCLI();
+        recipeMakerControllerCLI.createRecipe();
+
     }
 
     private void newCookBook() {
-        CookBookMakerControllerApp cookBookMakerControllerApp = new CookBookMakerControllerApp();
-        cookBookMakerControllerApp.createNewCookBook();
+        CookBookMakerControllerCLI cookBookMakerControllerCLI = new CookBookMakerControllerCLI();
+        cookBookMakerControllerCLI.createCookBook();
     }
 
     private void cookBookList() {
         CookBookSellingController cookBookSellingController = new CookBookSellingController();
-        List<CookBookBean> cookBookBeanList = cookBookSellingController.takeCookBookList(Session.getCurrentSession().getChefBean());
-        showCookBookList(cookBookBeanList);
-        chooseAction(cookBookBeanList);
+        List<CookBookBean> cookBookBeanList = null;
+        try {
+            cookBookBeanList = cookBookSellingController.takeCookBookList(Session.getCurrentSession().getChefBean());
+            showCookBookList(cookBookBeanList);
+            chooseAction(cookBookBeanList);
+        } catch (LoadCookBookException e) {
+            Printer.error(e.getMessage());
+        }
     }
 
     private void chooseAction(List<CookBookBean> cookBookBeanList) {
@@ -72,13 +74,16 @@ public class CookBookMainPageControllerCLI {
         Printer.printMessage("---Choose a function----");
         Printer.printMessage("\n1)Sell CookBook\n2)Modify CookBook\n3)Delete CookBook\n4)Back");
         Scanner scanner = new Scanner(System.in);
-        if(!checkInputDigit(scanner.nextLine())){
+        if (!checkInputDigit(scanner.nextLine())) {
             Printer.printMessage("Inserisci un input corretto");
             chooseAction(cookBookBeanList);
-        }else {
-            switch (Integer.parseInt(scanner.nextLine())){
-                case 1 -> startCookBookSelling(cookBookBeanList);
-                case 2,3 -> NotImplementedMessage.notImplementedYetMessage();
+        } else {
+            switch (Integer.parseInt(scanner.nextLine())) {
+                case 1 -> {
+                    CookBookSellingControllerCLI cookBookSellingControllerCLI = new CookBookSellingControllerCLI();
+                    cookBookSellingControllerCLI.sellCookBook(cookBookBeanList);
+                }
+                case 2, 3 -> NotImplementedMessage.notImplementedYetMessage();
                 case 4 -> displayCookBookMainPage();
                 default -> {
                     Printer.printMessage("Inserisci un input valido..");
@@ -88,17 +93,13 @@ public class CookBookMainPageControllerCLI {
         }
     }
 
-    private void startCookBookSelling(List<CookBookBean> cookBookBeanList) {
-        CookBookSellingController cookBookSellingController = new CookBookSellingController();
-        cookBookSellingController.sellCookBookToUser(cookBookBeanList);
-    }
 
     private void showCookBookList(List<CookBookBean> cookBookBeanList) {
         Printer.printPageTitle("CookBooks");
         int i = 1;
         for (CookBookBean cookBookBean :
                 cookBookBeanList) {
-            Printer.printMessage("\n-------------------\n"+ i +"CookBook: " + cookBookBean.getTitle() + "\nAuthor: " + cookBookBean.getAuthor().getName() +" " + cookBookBean.getAuthor().getSurname() + "\nDescription: " + cookBookBean.getDescription());
+            Printer.printMessage("\n-------------------\n" + i + ")CookBook: " + cookBookBean.getTitle() + "\nAuthor: " + cookBookBean.getAuthor().getName() + " " + cookBookBean.getAuthor().getSurname() + "\nDescription: " + cookBookBean.getDescription());
             i++;
         }
     }

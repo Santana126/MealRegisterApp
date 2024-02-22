@@ -9,17 +9,7 @@ import java.util.List;
 
 public class CookBook {
 
-    public String getTitle() {
-        return title;
-    }
 
-    public Chef getAuthor() {
-        return author;
-    }
-
-    public String getDescription() {
-        return description;
-    }
 
     private String title;
 
@@ -27,11 +17,8 @@ public class CookBook {
 
     private String description;
 
-    public List<Recipe> getRecipes() {
-        return recipes;
-    }
 
-    private List<Recipe> recipes;
+    private List<Recipe> recipes = new ArrayList<>();
 
     private List<CookBookType> types;
 
@@ -43,7 +30,6 @@ public class CookBook {
     public CookBook(String title, Chef author) {
         this.title = title;
         this.author = author;
-        this.recipes = new ArrayList<>();
         this.types = new ArrayList<>();
     }
 
@@ -55,6 +41,21 @@ public class CookBook {
             this.recipes.add(new Recipe(recipeBean));
         }
         this.description = cookBookBean.getDescription();
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Chef getAuthor() {
+        return author;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+    public List<Recipe> getRecipes() {
+        return recipes;
     }
 
     public void addRecipe(Recipe recipe) {

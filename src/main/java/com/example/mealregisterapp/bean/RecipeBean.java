@@ -1,12 +1,13 @@
 package com.example.mealregisterapp.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeBean {
 
     private String name;
 
-    private Integer recipeID;
+    private Integer recipeId;
 
     private Integer difficult;
 
@@ -14,7 +15,7 @@ public class RecipeBean {
 
     private String description;
 
-    private List<IngredientBean> ingredientBeanList;
+    private List<IngredientBean> ingredientBeanList = new ArrayList<>();
 
     public RecipeBean(String name, Integer difficult, Integer cost, String description) {
         this.name = name;
@@ -23,7 +24,8 @@ public class RecipeBean {
         this.description = description;
     }
 
-    public RecipeBean(String name, String description) {
+    public RecipeBean(String name, String description,int recipeId) {
+        this.recipeId = recipeId;
         this.name = name;
         this.description = description;
     }
@@ -74,5 +76,13 @@ public class RecipeBean {
 
     public List<IngredientBean> getIngredientBeanList() {
         return ingredientBeanList;
+    }
+
+    public Integer getRecipeId() {
+        return recipeId;
+    }
+
+    public void setRecipeId(Integer recipeId) {
+        this.recipeId = recipeId;
     }
 }
