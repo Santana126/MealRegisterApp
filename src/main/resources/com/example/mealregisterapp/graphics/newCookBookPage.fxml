@@ -85,7 +85,7 @@
                                  <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
                               </HBox.margin>
                            </Button>
-                           <Button minHeight="40.0" mnemonicParsing="false" onAction="#handleConfirmCookBookClick" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #c8f7cf; -fx-background-radius: 100;" text="Confirm CookBook" textAlignment="CENTER" textFill="#00612d">
+                           <Button alignment="CENTER" minHeight="40.0" mnemonicParsing="false" onAction="#handleConfirmCookBookClick" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #c8f7cf; -fx-background-radius: 100;" text="Confirm CookBook" textAlignment="CENTER" textFill="#00612d">
                               <font>
                                  <Font name="Arial Bold" size="18.0" />
                               </font>
@@ -97,7 +97,7 @@
                      </HBox>
                      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1100.0">
                         <children>
-                           <Button minHeight="40.0" mnemonicParsing="false" onAction="#handleInsertRecipeClick" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #c8f7cf; -fx-background-radius: 100;" text="Insert Recipe" textAlignment="CENTER" textFill="#00612d">
+                           <Button alignment="CENTER" minHeight="40.0" mnemonicParsing="false" onAction="#handleInsertRecipeClick" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #c8f7cf; -fx-background-radius: 100;" text="Insert Recipe" textAlignment="CENTER" textFill="#00612d">
                               <font>
                                  <Font name="Arial Bold" size="18.0" />
                               </font>
@@ -105,7 +105,7 @@
                                  <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
                               </HBox.margin>
                            </Button>
-                           <Button minHeight="40.0" mnemonicParsing="false" onAction="#handleViewRecipesClick" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #c8f7cf; -fx-background-radius: 100;" text="View Recipe" textAlignment="CENTER" textFill="#00612d">
+                           <Button alignment="CENTER" minHeight="40.0" mnemonicParsing="false" onAction="#handleViewRecipesClick" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #c8f7cf; -fx-background-radius: 100;" text="View Recipe" textAlignment="CENTER" textFill="#00612d">
                               <font>
                                  <Font name="Arial Bold" size="18.0" />
                               </font>

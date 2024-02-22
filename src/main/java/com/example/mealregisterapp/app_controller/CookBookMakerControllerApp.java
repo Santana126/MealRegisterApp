@@ -8,8 +8,8 @@ import com.example.mealregisterapp.exception.RecipeDaoException;
 import com.example.mealregisterapp.exception.SaveCookBookException;
 import com.example.mealregisterapp.model.CookBook;
 import com.example.mealregisterapp.session.Session;
+import com.example.mealregisterapp.utils.Printer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CookBookMakerControllerApp {
@@ -27,15 +27,17 @@ public class CookBookMakerControllerApp {
 
     public void insertRecipeIntoCookBook(List<RecipeBean> selectedRecipeList) {
 
-        for (RecipeBean recipeBean :
-                selectedRecipeList) {
-            Session.getCurrentSession().getCookBookBean().addRecipe(recipeBean);
+        for (RecipeBean recipeBean:
+             selectedRecipeList) {
+            Printer.printMessage("Recipe ID: " + recipeBean.getRecipeId());
         }
+
+        Session.getCurrentSession().addRecipeListToCurrentCookBook(selectedRecipeList);
     }
 
     public List<RecipeBean> takeRecipeList() throws RecipeDaoException {
         RecipeDAO recipeDAO = new RecipeDAO();
-        List<RecipeBean> recipeBeanList = new ArrayList<>();
+        List<RecipeBean> recipeBeanList;
         try {
             recipeBeanList = recipeDAO.loadAllChefRecipe(Session.getCurrentSession().getChefBean());
         } catch (RecipeDaoException e) {
@@ -52,6 +54,8 @@ public class CookBookMakerControllerApp {
         } catch (SaveCookBookException e) {
             throw new SaveCookBookException(e.getMessage());
         }
+        Session.getCurrentSession().resetCookBookBean();
+        Session.getCurrentSession().resetRecipeBean();
     }
 
     public void saveCurrentCookBookData(String title, String description) {

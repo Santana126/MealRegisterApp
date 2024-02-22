@@ -37,8 +37,8 @@ public class Queries {
     }
 
     public static String saveCookBook(CookBook cookBook, Recipe recipe) {
-        Printer.printMessage("('" +cookBook.getTitle() + "'," + cookBook.getAuthor().getChefID() + "," + recipe.getRecipeId() + ", '" + cookBook.getDescription() + "');");
-        return "INSERT INTO `cookbookapp`.`CookBook` (`title`, `authorId`, `recipeId`, `description`) VALUES ('" + cookBook.getTitle() + "'," + cookBook.getAuthor().getChefID() + "," + recipe.getRecipeId() + ", '" + cookBook.getDescription() + "');";
+        Printer.printMessage("('" +cookBook.getTitle() + "'," + (cookBook.getAuthor().getChefID()+1) + "," + recipe.getRecipeId() + ", '" + cookBook.getDescription() + "');");
+        return "INSERT INTO `cookbookapp`.`CookBook` (`title`, `authorId`, `recipeId`, `description`) VALUES ('" + cookBook.getTitle() + "'," + (cookBook.getAuthor().getChefID()+1) + "," + recipe.getRecipeId() + ", '" + cookBook.getDescription() + "');";
     }
 
     public static String loadChefCookBooks(int chefID) {

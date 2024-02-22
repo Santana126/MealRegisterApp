@@ -24,6 +24,10 @@ public class CookBookDAO {
     private PreparedStatement preparedStatement;
 
 
+
+    private int outcome;
+
+
     public CookBookDAO() {
         connection = SingletonConnection.getInstance();
     }
@@ -39,8 +43,11 @@ public class CookBookDAO {
                 preparedStatement = connection.prepareStatement(Queries.saveCookBook(cookBook, recipe));
                 int rowAffected = preparedStatement.executeUpdate();
                 if (rowAffected <= 0) {
+                    this.outcome = -1;
                     throw new SaveCookBookException("Salvataggio CookBook fallito");
                 }
+                this.outcome = 1;
+
             } catch (SQLException e) {
                 throw new SaveCookBookException(e.getMessage());
             }
@@ -80,5 +87,9 @@ public class CookBookDAO {
         } catch (SQLException | UpdateCookBookStatusException e) {
             throw new UpdateCookBookStatusException(e.getMessage());
         }
+    }
+
+    public int getOutcome() {
+        return outcome;
     }
 }

@@ -68,6 +68,13 @@ public class CookBookBean {
         this.recipeBeanList.add(recipeBean);
     }
 
+    public void addRecipeList(List<RecipeBean> recipeBeanList){
+        for (RecipeBean recipe :
+                recipeBeanList) {
+            this.addRecipe(recipe);
+        }
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }

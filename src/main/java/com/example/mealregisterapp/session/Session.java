@@ -5,6 +5,8 @@ import com.example.mealregisterapp.bean.CookBookBean;
 import com.example.mealregisterapp.bean.RecipeBean;
 import com.example.mealregisterapp.bean.UserBean;
 
+import java.util.List;
+
 
 public class Session {
 
@@ -89,6 +91,14 @@ public class Session {
 
     public void setRecipeBean(RecipeBean recipeBean){
         this.recipeBean = recipeBean;
+    }
+
+    public void addRecipeListToCurrentCookBook(List<RecipeBean> recipeBeanList){
+        this.cookBookBean.addRecipeList(recipeBeanList);
+    }
+
+    public void resetRecipeBean(){
+        this.recipeBean = null;
     }
 
 }

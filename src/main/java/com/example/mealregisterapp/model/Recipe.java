@@ -11,7 +11,7 @@ import java.util.List;
 public class Recipe {
 
 
-    private String recipeId;
+    private int recipeId;
     private String name;
     private String description;
     private Integer difficult;
@@ -27,7 +27,7 @@ public class Recipe {
 
     public Recipe(RecipeBean recipeBean){
         this.name = recipeBean.getName();
-
+        this.recipeId = recipeBean.getRecipeId();
         if(recipeBean.getIngredientBeanList() != null) {
             for (IngredientBean ingredientBean : recipeBean.getIngredientBeanList()) {
                 Ingredient ingredient = new Ingredient(ingredientBean);
@@ -83,7 +83,7 @@ public class Recipe {
         this.description = description;
     }
 
-    public String getRecipeId() {
+    public int getRecipeId() {
         return recipeId;
     }
 

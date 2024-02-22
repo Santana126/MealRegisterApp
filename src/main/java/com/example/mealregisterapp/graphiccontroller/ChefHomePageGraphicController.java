@@ -20,7 +20,13 @@ public class ChefHomePageGraphicController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        chefNameText.setText(Session.getCurrentSession().getChefBean().getName());
+        if (Session.getCurrentSession().getChefBean().getUsername() == null){
+            String name = Session.getCurrentSession().getChefBean().getName();
+            String surname = Session.getCurrentSession().getChefBean().getSurname();
+            chefNameText.setText(name + " " + surname);
+        }else {
+            chefNameText.setText(Session.getCurrentSession().getChefBean().getUsername());
+        }
     }
 
     @FXML
@@ -29,14 +35,6 @@ public class ChefHomePageGraphicController implements Initializable {
     }
 
 
-    @FXML
-    private void handleExitClick(ActionEvent event) throws IOException {
-        this.sceneManager.showExitOverlay();
-    }
-
-    protected static void exitConfirmed() {
-        System.exit(1);
-    }
 
 
     @FXML

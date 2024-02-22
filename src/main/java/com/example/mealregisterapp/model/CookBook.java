@@ -3,6 +3,7 @@ package com.example.mealregisterapp.model;
 import com.example.mealregisterapp.bean.CookBookBean;
 import com.example.mealregisterapp.bean.RecipeBean;
 import com.example.mealregisterapp.exception.CookBookDescriptionAlreadyExist;
+import com.example.mealregisterapp.utils.Printer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,9 @@ public class CookBook {
         this.author = new Chef(cookBookBean.getAuthor());
         for (RecipeBean recipeBean : cookBookBean.getRecipeBeanList()
         ) {
+            Printer.printMessage("Last step recipe id: " + recipeBean.getRecipeId());
             this.recipes.add(new Recipe(recipeBean));
+
         }
         this.description = cookBookBean.getDescription();
     }
