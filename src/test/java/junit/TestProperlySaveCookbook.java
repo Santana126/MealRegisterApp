@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestProperlySaveCookbook {
 
+    //Test if a cookbook is correctly saved into the DB
 
     @Test
     void saveCookBook() {

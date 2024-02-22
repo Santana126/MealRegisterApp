@@ -8,7 +8,6 @@ import com.example.mealregisterapp.exception.RecipeDaoException;
 import com.example.mealregisterapp.exception.SaveCookBookException;
 import com.example.mealregisterapp.model.CookBook;
 import com.example.mealregisterapp.session.Session;
-import com.example.mealregisterapp.utils.Printer;
 
 import java.util.List;
 
@@ -26,13 +25,12 @@ public class CookBookMakerControllerApp {
 
 
     public void insertRecipeIntoCookBook(List<RecipeBean> selectedRecipeList) {
-
-        for (RecipeBean recipeBean:
-             selectedRecipeList) {
-            Printer.printMessage("Recipe ID: " + recipeBean.getRecipeId());
-        }
-
         Session.getCurrentSession().addRecipeListToCurrentCookBook(selectedRecipeList);
+    }
+
+    public void insertRecipeIntoCookBook(List<RecipeBean> selectedRecipeList,CookBookBean cookBookBean) {
+
+        cookBookBean.addRecipeList(selectedRecipeList);
     }
 
     public List<RecipeBean> takeRecipeList() throws RecipeDaoException {
@@ -62,5 +60,9 @@ public class CookBookMakerControllerApp {
         Session.getCurrentSession().getCookBookBean().setAuthor(Session.getCurrentSession().getChefBean());
         Session.getCurrentSession().getCookBookBean().setTitle(title);
         Session.getCurrentSession().getCookBookBean().setDescription(description);
+    }
+
+    public List<RecipeBean> takeRecipeFromCookBook(CookBookBean cookBookBean){
+        return cookBookBean.getRecipeBeanList();
     }
 }
