@@ -1,26 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="1100.0" style="-fx-background-color: #F5F5DC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mealregisterapp.graphiccontroller.AccountPageGraphicController">
     <children>
-        <Text layoutX="236.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My Account">
-            <font>
-                <Font size="24.0" />
-            </font>
-        </Text>
-        <Button layoutX="265.0" layoutY="294.0" mnemonicParsing="false" onAction="#handleHomePageClick" prefHeight="70.0" prefWidth="70.0" text="Home" />
-        <Label fx:id="nameLabel" layoutX="46.0" layoutY="102.0" prefHeight="18.0" prefWidth="37.0" text="Nome" />
-        <Label fx:id="surnameLabel" layoutX="46.0" layoutY="120.0" prefHeight="18.0" prefWidth="57.0" text="Cognome" />
-        <Label fx:id="usernameLabel" layoutX="46.0" layoutY="83.0" prefHeight="18.0" prefWidth="58.0" text="Username" />
-        <Label fx:id="emailLabel" layoutX="46.0" layoutY="138.0" prefHeight="18.0" prefWidth="37.0" text="email" />
-        <Label fx:id="nameField" layoutX="128.0" layoutY="102.0" prefHeight="18.0" prefWidth="37.0" />
-        <Label fx:id="surnameField" layoutX="128.0" layoutY="120.0" prefHeight="18.0" prefWidth="57.0" />
-        <Label fx:id="usernameField" layoutX="128.0" layoutY="83.0" prefHeight="18.0" prefWidth="58.0" />
-        <Label fx:id="emailField" layoutX="128.0" layoutY="138.0" prefHeight="18.0" prefWidth="148.0" />
+      <VBox alignment="CENTER" prefHeight="700.0" prefWidth="1100.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="270.0" prefWidth="1100.0">
+               <children>
+                    <Text stroke="BLACK" strokeWidth="2.0" text="My Account" textAlignment="CENTER">
+                        <font>
+                            <Font size="48.0" />
+                        </font>
+                    </Text>
+               </children>
+            </HBox>
+            <VBox prefHeight="600.0" prefWidth="1100.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1094.0">
+                     <children>
+                          <Label fx:id="usernameLabel" prefHeight="40.0" prefWidth="130.0" text="Username">
+                           <font>
+                              <Font name="Arial" size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                          <Label fx:id="usernameField" prefHeight="40.0" prefWidth="250.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                          <Label fx:id="nameLabel" prefHeight="40.0" prefWidth="130.0" text="Nome">
+                           <font>
+                              <Font name="Arial" size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                          <Label fx:id="nameField" prefHeight="40.0" prefWidth="250.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                          <Label fx:id="surnameLabel" prefHeight="40.0" prefWidth="130.0" text="Cognome">
+                           <font>
+                              <Font name="Arial" size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                          <Label fx:id="surnameField" prefHeight="40.0" prefWidth="240.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="241.0">
+                     <children>
+                          <Label fx:id="emailLabel" prefHeight="40.0" prefWidth="130.0" text="Email">
+                           <font>
+                              <Font name="Arial" size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                          <Label fx:id="emailField" prefHeight="40.0" prefWidth="240.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="300.0" prefWidth="1100.0">
+               <children>
+                    <Button mnemonicParsing="false" onAction="#handleHomePageClick" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #c8f7cf; -fx-background-radius: 20;" stylesheets="@../style/tempStyle.css" text="Home" textFill="#00612d">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
     </children>
 </AnchorPane>

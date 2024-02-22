@@ -23,12 +23,11 @@ public class UserHomePageGraphicController {
         this.sceneManager.showMealPage();
     }
 
-    @FXML
-    private void handleExitClick(ActionEvent event) throws IOException {
-        this.sceneManager.showExitOverlay();
+
+    public void handleCookBookPageClick(ActionEvent event) {
+
     }
 
-    protected static void exitConfirmed() {
-        System.exit(1);
+    public void handleSettingsClick(ActionEvent event) {
     }
 }

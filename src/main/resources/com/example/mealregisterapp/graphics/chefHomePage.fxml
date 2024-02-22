@@ -9,11 +9,11 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="710.0" prefWidth="1100.0" style="-fx-background-color: #F5F5DC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mealregisterapp.graphiccontroller.ChefHomePageGraphicController">
-   <VBox alignment="CENTER" prefHeight="705.0" prefWidth="1097.0">
+   <VBox alignment="CENTER" prefHeight="700.0" prefWidth="1100.0">
       <children>
-         <HBox alignment="CENTER" prefHeight="209.0" prefWidth="1098.0">
+         <HBox alignment="CENTER" prefHeight="270.0" prefWidth="1100.0">
             <children>
-               <Text stroke="BLACK" strokeLineJoin="ROUND" strokeWidth="2.0" text="Welcome">
+               <Text stroke="BLACK" strokeLineJoin="ROUND" strokeWidth="2.0" text="Welcome" textAlignment="CENTER">
                   <font>
                      <Font size="48.0" />
                   </font>
@@ -37,11 +37,11 @@
                </Text>
             </children>
          </HBox>
-         <HBox alignment="CENTER" prefHeight="522.0" prefWidth="1098.0">
+         <HBox alignment="CENTER" prefHeight="500.0" prefWidth="1100.0">
             <children>
-               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="381.0">
+               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="1100.0">
                   <children>
-                     <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleMyAccountClick" prefHeight="60.0" prefWidth="350.0" style="-fx-background-color: #9BEA98; -fx-background-radius: 100;" stylesheets="@../style/tempStyle.css" text="MyAccount" textAlignment="CENTER" textFill="#00612d">
+                     <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleMyAccountClick" prefHeight="60.0" prefWidth="350.0" style="-fx-background-color: #c8f7cf; -fx-background-radius: 100;" stylesheets="@../style/tempStyle.css" text="MyAccount" textAlignment="CENTER" textFill="#00612d">
                         <font>
                            <Font name="Arial Bold" size="18.0" />
                         </font>
@@ -49,7 +49,7 @@
                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                         </VBox.margin>
                      </Button>
-                     <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleCookBookPageClick" prefHeight="60.0" prefWidth="350.0" style="-fx-background-color: #9BEA98; -fx-background-radius: 100;" stylesheets="@../style/tempStyle.css" text="CookBook Page" textFill="WHITE">
+                     <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleCookBookPageClick" prefHeight="60.0" prefWidth="350.0" style="-fx-background-color: #c8f7cf; -fx-background-radius: 100;" stylesheets="@../style/tempStyle.css" text="CookBook Page" textFill="#00612d">
                         <font>
                            <Font name="Arial Bold" size="18.0" />
                         </font>
@@ -57,7 +57,7 @@
                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                         </VBox.margin>
                      </Button>
-                     <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleSettingsClick" prefHeight="60.0" prefWidth="350.0" style="-fx-background-color: #9BEA98; -fx-background-radius: 100;" stylesheets="@../style/tempStyle.css" text="Settings" textFill="WHITE">
+                     <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleSettingsClick" prefHeight="60.0" prefWidth="350.0" style="-fx-background-color: #c8f7cf; -fx-background-radius: 100;" stylesheets="@../style/tempStyle.css" text="Settings" textFill="#00612d">
                         <font>
                            <Font name="Arial Bold" size="18.0" />
                         </font>

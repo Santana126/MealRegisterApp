@@ -1,36 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="710.0" prefWidth="1100.0" style="-fx-background-color: #F5F5DC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mealregisterapp.graphiccontroller.CookBookMakerGraphicController">
-   <Text layoutX="439.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New CookBook Page">
-      <font>
-         <Font size="24.0" />
-      </font>
-   </Text>
-   <Button layoutX="697.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleViewRecipesClick" prefHeight="43.0" prefWidth="118.0" text="View Recipe" />
-   <Button layoutX="498.0" layoutY="495.0" mnemonicParsing="false" onAction="#handleConfirmCookBookClick" prefHeight="32.0" prefWidth="118.0" text="Confirm CookBook">
-      <font>
-         <Font size="11.0" />
-      </font></Button>
-   <Button layoutX="284.0" layoutY="489.0" mnemonicParsing="false" onAction="#handleBackButtonClick" prefHeight="43.0" prefWidth="43.0" text="Back" />
-   <Button layoutX="498.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleInsertRecipeClick" prefHeight="43.0" prefWidth="118.0" text="Insert Recipe" />
-   <Button layoutX="306.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleCookBookResumeClick" prefHeight="43.0" prefWidth="118.0" text="CookBook Resume" />
-   <Text layoutX="306.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CookBook Title:" wrappingWidth="130.39995117187505">
-      <font>
-         <Font size="18.0" />
-      </font>
-   </Text>
-   <TextField fx:id="titleField" layoutX="446.0" layoutY="261.0" />
-   <Text layoutX="306.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" wrappingWidth="108.79997558593755">
-      <font>
-         <Font size="18.0" />
-      </font>
-   </Text>
-   <TextArea fx:id="descriptionTextArea" layoutX="446.0" layoutY="300.0" prefHeight="70.0" prefWidth="150.0" promptText="max 40 char" wrapText="true" />
+   <VBox prefHeight="700.0" prefWidth="1100.0">
+      <children>
+         <HBox alignment="CENTER" prefHeight="245.0" prefWidth="1100.0">
+            <children>
+               <Text stroke="BLACK" strokeWidth="2.0" text="New CookBook Page" textAlignment="CENTER">
+                  <font>
+                     <Font size="48.0" />
+                  </font>
+               </Text>
+            </children>
+         </HBox>
+         <HBox alignment="CENTER" prefHeight="309.0" prefWidth="1100.0">
+            <children>
+               <VBox minHeight="300.0" prefHeight="300.0" prefWidth="1100.0">
+                  <children>
+                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                        <children>
+                           <Label prefHeight="60.0" prefWidth="200.0" text="CookBook Title:">
+                              <font>
+                                 <Font name="Arial" size="24.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                              </HBox.margin>
+                           </Label>
+                           <TextField fx:id="titleField" prefHeight="30.0" prefWidth="300.0" promptText="Insert Title">
+                              <font>
+                                 <Font name="Arial" size="24.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                              </HBox.margin>
+                           </TextField>
+                        </children>
+                     </HBox>
+                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1100.0">
+                        <children>
+                           <Label prefHeight="60.0" prefWidth="200.0" text="Description:">
+                              <font>
+                                 <Font name="Arial" size="24.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                              </HBox.margin>
+                           </Label>
+                           <TextArea fx:id="descriptionTextArea" minHeight="100.0" prefHeight="100.0" prefWidth="300.0" promptText="Insert Description (max 40 char)" wrapText="true">
+                              <font>
+                                 <Font name="Arial" size="18.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                              </HBox.margin>
+                           </TextArea>
+                        </children>
+                     </HBox>
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
+         <HBox alignment="CENTER" prefHeight="379.0" prefWidth="1100.0">
+            <children>
+               <VBox alignment="CENTER" prefHeight="305.0" prefWidth="1100.0">
+                  <children>
+                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                        <children>
+                           <Button alignment="CENTER" minHeight="40.0" mnemonicParsing="false" onAction="#handleCookBookResumeClick" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #c8f7cf; -fx-background-radius: 100;" text="CookBook Resume" textAlignment="CENTER" textFill="#00612d">
+                              <font>
+                                 <Font name="Arial Bold" size="18.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                              </HBox.margin>
+                           </Button>
+                           <Button minHeight="40.0" mnemonicParsing="false" onAction="#handleConfirmCookBookClick" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #c8f7cf; -fx-background-radius: 100;" text="Confirm CookBook" textAlignment="CENTER" textFill="#00612d">
+                              <font>
+                                 <Font name="Arial Bold" size="18.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                              </HBox.margin>
+                           </Button>
+                        </children>
+                     </HBox>
+                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1100.0">
+                        <children>
+                           <Button minHeight="40.0" mnemonicParsing="false" onAction="#handleInsertRecipeClick" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #c8f7cf; -fx-background-radius: 100;" text="Insert Recipe" textAlignment="CENTER" textFill="#00612d">
+                              <font>
+                                 <Font name="Arial Bold" size="18.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                              </HBox.margin>
+                           </Button>
+                           <Button minHeight="40.0" mnemonicParsing="false" onAction="#handleViewRecipesClick" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #c8f7cf; -fx-background-radius: 100;" text="View Recipe" textAlignment="CENTER" textFill="#00612d">
+                              <font>
+                                 <Font name="Arial Bold" size="18.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                              </HBox.margin>
+                           </Button>
+                        </children>
+                     </HBox>
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
+         <HBox alignment="CENTER" prefHeight="300.0" prefWidth="1100.0">
+            <children>
+               <Button mnemonicParsing="false" onAction="#handleBackButtonClick" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #c8f7cf; -fx-background-radius: 10;" text="Back" textFill="#00612d">
+                  <font>
+                     <Font name="Arial Bold" size="14.0" />
+                  </font>
+               </Button>
+            </children>
+         </HBox>
+      </children>
+   </VBox>
 </AnchorPane>
