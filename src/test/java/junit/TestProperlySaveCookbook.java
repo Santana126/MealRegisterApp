@@ -9,23 +9,23 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestProperlySaveCookbook {
+class TestProperlySaveCookbook {
 
     //Test if a cookbook is correctly saved into the DB
 
     @Test
     void saveCookBook() {
         //cookbook saving test into DB
-            CookBookDAO cookBookDAO =new CookBookDAO();
-        try{
-            ChefBean chefBean = new ChefBean(1,"Franco","Crimini","franchi@gmail.com");
-            CookBookBean cookBookBean = new CookBookBean(chefBean,"TestTitle","DescriptionTitle");
+        CookBookDAO cookBookDAO = new CookBookDAO();
+        try {
+            ChefBean chefBean = new ChefBean(1, "Franco", "Crimini", "franchi@gmail.com");
+            CookBookBean cookBookBean = new CookBookBean(chefBean, "TestTitle", "DescriptionTitle");
             CookBook cookBook = new CookBook(cookBookBean);
             cookBookDAO.saveCookBook(cookBook);
         } catch (SaveCookBookException e) {
             //Do Nothing
         } finally {
-            assertEquals(1,cookBookDAO.getOutcome());
+            assertEquals(1, cookBookDAO.getOutcome());
         }
     }
 }

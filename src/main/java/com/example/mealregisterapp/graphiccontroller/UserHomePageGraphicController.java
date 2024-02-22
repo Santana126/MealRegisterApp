@@ -25,9 +25,10 @@ public class UserHomePageGraphicController {
 
 
     public void handleCookBookPageClick(ActionEvent event) {
-
+        //not implemented yet
     }
 
     public void handleSettingsClick(ActionEvent event) {
+        //not implemented yet
     }
 }
